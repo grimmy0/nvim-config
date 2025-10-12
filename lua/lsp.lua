@@ -35,10 +35,9 @@ if ok_cmp then
   capabilities = cmp_lsp.default_capabilities(capabilities)
 end
 
-local lspconfig = require('lspconfig')
-
--- EXACTLY as per Ruff docs: use lspconfig.ruff
-lspconfig.ruff.setup({
+-- Configure defaults, then enable by name (Nvim 0.11 API)
+-- Ruff
+vim.lsp.config('ruff', {
   on_attach = function(client, bufnr)
     client.server_capabilities.hoverProvider = false
     on_attach(client, bufnr)
@@ -46,8 +45,12 @@ lspconfig.ruff.setup({
   capabilities = capabilities,
 })
 
--- Pyright alongside Ruff
-lspconfig.pyright.setup({
+-- Pyright
+vim.lsp.config('pyright', {
   on_attach = on_attach,
   capabilities = capabilities,
 })
+
+-- Enable filetype-based activation
+vim.lsp.enable('ruff')
+vim.lsp.enable('pyright')
