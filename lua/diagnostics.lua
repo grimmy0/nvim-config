@@ -22,15 +22,16 @@ vim.diagnostic.config({
 })
 
 vim.o.updatetime = 250
-vim.api.nvim_create_autocmd("CursorHold", {
-  callback = function()
-    vim.diagnostic.open_float(nil, { focus = false })
-  end,
-})
+if not vim.g.headless then
+  vim.api.nvim_create_autocmd("CursorHold", {
+    callback = function()
+      vim.diagnostic.open_float(nil, { focus = false })
+    end,
+  })
+end
 
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Prev diagnostic' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
 vim.keymap.set('n', '<leader>dd', function()
   vim.diagnostic.setloclist({ open = true })
 end, { desc = 'Diagnostics list' })
-
