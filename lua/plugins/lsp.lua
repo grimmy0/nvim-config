@@ -12,7 +12,7 @@ return function(use)
     requires = { 'neovim/nvim-lspconfig' },
     config = function()
       require('mason-lspconfig').setup({
-        ensure_installed = { 'pyright' },
+        ensure_installed = { 'pyright', 'ruff' },
         automatic_installation = true,
       })
 
@@ -41,9 +41,25 @@ return function(use)
       end
 
       require('mason-lspconfig').setup_handlers({
+        function(server)
+          lspconfig[server].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+          })
+        end,
         pyright = function()
           lspconfig.pyright.setup({
             on_attach = on_attach,
+            capabilities = capabilities,
+          })
+        end,
+        ruff = function()
+          lspconfig.ruff.setup({
+            on_attach = function(client, bufnr)
+              -- Let Pyright handle hover; Ruff focuses on linting/actions
+              client.server_capabilities.hoverProvider = false
+              on_attach(client, bufnr)
+            end,
             capabilities = capabilities,
           })
         end,
