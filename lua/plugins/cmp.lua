@@ -9,6 +9,9 @@ return {
     local cmp = require('cmp')
     local has_ccmp, copilot_cmp = pcall(require, 'copilot_cmp')
     cmp.setup({
+      experimental = {
+        ghost_text = false
+      },
       sources = cmp.config.sources({
         { name = 'copilot' },
         { name = 'nvim_lsp' },

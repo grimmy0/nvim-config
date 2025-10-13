@@ -5,8 +5,15 @@ return {
   config = function()
     if vim.g.headless then return end
     require('copilot').setup({
-      suggestion = { enabled = false }, -- handled by copilot-cmp
-      panel = { enabled = false },      -- handled by copilot-cmp
+      suggestion = {
+        enabled = true,
+        auto_trigger = true,
+        keymap = {
+          accept = "<CR>",
+          dismiss = "<C-e>",
+        },
+      },
+      panel = { enabled = false },
       filetypes = {
         TelescopePrompt = false,
         NvimTree = false,
