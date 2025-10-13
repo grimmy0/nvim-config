@@ -1,1 +1,27 @@
-pack/*
+# Neovim swap files
+*.swp
+*.swo
+
+# Neovim backup files
+*~
+*.bak
+
+# Neovim undo files
+.undodir/
+
+# Neovim session files
+Session.vim
+.Session.vim
+
+# Plugin managers
+pack/
+
+# Log files
+*.log
+.nvimlog
+
+# macOS specific
+.DS_Store
+
+# Packer compiled file
+plugin/packer_compiled.lua
