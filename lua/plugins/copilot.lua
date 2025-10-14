@@ -5,14 +5,7 @@ return {
   config = function()
     if vim.g.headless then return end
     require('copilot').setup({
-      suggestion = {
-        enabled = true,
-        auto_trigger = true,
-        keymap = {
-          accept = "<Tab>",
-          dismiss = "<C-e>",
-        },
-      },
+      suggestion = { enabled = false },
       panel = { enabled = false },
       filetypes = {
         TelescopePrompt = false,
