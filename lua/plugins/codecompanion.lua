@@ -7,11 +7,13 @@ return {
   config = function()
     require("codecompanion").setup({
       adapters = {
-        gemini_cli = function()
-          return require("codecompanion.adapters").extend("gemini", {
-            client = "gemini-cli",
-          })
-        end,
+        http = {
+          gemini_cli = function()
+            return require("codecompanion.adapters").extend("gemini", {
+              client = "gemini-cli",
+            })
+          end,
+        },
       },
       strategies = {
         agent = {
