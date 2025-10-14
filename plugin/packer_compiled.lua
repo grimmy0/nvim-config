@@ -103,7 +103,7 @@ _G.packer_plugins = {
   ["copilot.lua"] = {
     after = { "copilot-cmp" },
     commands = { "Copilot" },
-    config = { "\27LJ\2\ní\1\0\0\4\0\r\0\0196\0\0\0009\0\1\0009\0\2\0\15\0\0\0X\1\1€K\0\1\0006\0\3\0'\2\4\0B\0\2\0029\0\5\0005\2\a\0005\3\6\0=\3\b\0025\3\t\0=\3\n\0025\3\v\0=\3\f\2B\0\2\1K\0\1\0\14filetypes\1\0\3\rNvimTree\1\20TelescopePrompt\1\6*\2\npanel\1\0\1\fenabled\1\15suggestion\1\0\3\15suggestion\0\14filetypes\0\npanel\0\1\0\1\fenabled\1\nsetup\fcopilot\frequire\rheadless\6g\bvim\0" },
+    config = { "\27LJ\2\n°\2\0\0\5\0\15\0\0216\0\0\0009\0\1\0009\0\2\0\15\0\0\0X\1\1€K\0\1\0006\0\3\0'\2\4\0B\0\2\0029\0\5\0005\2\t\0005\3\6\0005\4\a\0=\4\b\3=\3\n\0025\3\v\0=\3\f\0025\3\r\0=\3\14\2B\0\2\1K\0\1\0\14filetypes\1\0\3\6*\2\rNvimTree\1\20TelescopePrompt\1\npanel\1\0\1\fenabled\1\15suggestion\1\0\3\npanel\0\15suggestion\0\14filetypes\0\vkeymap\1\0\2\fdismiss\n<C-e>\vaccept\n<Tab>\1\0\3\vkeymap\0\17auto_trigger\2\fenabled\2\nsetup\fcopilot\frequire\rheadless\6g\bvim\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -128,7 +128,7 @@ _G.packer_plugins = {
   },
   ["nvim-cmp"] = {
     after = { "copilot-cmp" },
-    config = { "\27LJ\2\nÆ\a\0\0\v\0-\0o6\0\0\0'\2\1\0B\0\2\0026\1\2\0006\3\0\0'\4\3\0B\1\3\0039\3\4\0005\5\v\0009\6\5\0009\6\6\0064\b\5\0005\t\a\0>\t\1\b5\t\b\0>\t\2\b5\t\t\0>\t\3\b5\t\n\0>\t\4\bB\6\2\2=\6\6\5\15\0\1\0X\6/€5\6\f\0004\a\f\0009\b\r\0029\b\14\b>\b\1\a9\b\r\0029\b\15\b>\b\2\a9\b\5\0009\b\16\b9\b\17\b>\b\3\a9\b\5\0009\b\16\b9\b\18\b>\b\4\a9\b\5\0009\b\16\b9\b\15\b>\b\5\a9\b\5\0009\b\16\b9\b\19\b>\b\6\a9\b\5\0009\b\16\b9\b\20\b>\b\a\a9\b\5\0009\b\16\b9\b\21\b>\b\b\a9\b\5\0009\b\16\b9\b\22\b>\b\t\a9\b\5\0009\b\16\b9\b\23\b>\b\n\a9\b\5\0009\b\16\b9\b\24\b>\b\v\a=\a\r\6\14\0\6\0X\a\1€+\6\0\0=\6\25\0055\6\28\0009\a\26\0009\a\27\aB\a\1\2=\a\29\0069\a\26\0009\a\30\aB\a\1\2=\a\31\0069\a\26\0009\a \a)\tüÿB\a\2\2=\a!\0069\a\26\0009\a \a)\t\4\0B\a\2\2=\a\"\0069\a\26\0009\a#\aB\a\1\2=\a$\0069\a\26\0009\a%\aB\a\1\2=\a&\0069\a\26\0009\a'\a5\t*\0009\n(\0009\n)\n=\n+\tB\a\2\2=\a,\6=\6\26\5B\3\2\1K\0\1\0\t<CR>\rbehavior\1\0\2\vselect\2\rbehavior\0\vInsert\20ConfirmBehavior\fconfirm\n<C-e>\nclose\14<C-Space>\rcomplete\n<C-f>\n<C-d>\16scroll_docs\n<C-n>\21select_next_item\n<C-p>\1\0\a\n<C-e>\0\n<C-d>\0\t<CR>\0\n<C-n>\0\n<C-p>\0\14<C-Space>\0\n<C-f>\0\21select_prev_item\fmapping\fsorting\norder\vlength\14sort_text\tkind\rlocality\18recently_used\nexact\voffset\fcompare\nscore\15prioritize\16comparators\1\0\2\20priority_weight\3\2\16comparators\0\1\0\3\fsources\0\fsorting\0\fmapping\0\1\0\1\tname\tpath\1\0\1\tname\vbuffer\1\0\1\tname\rnvim_lsp\1\0\1\tname\fcopilot\fsources\vconfig\nsetup\16copilot_cmp\npcall\bcmp\frequire\0" },
+    config = { "\27LJ\2\nX\0\1\4\1\3\0\r-\1\0\0009\1\0\1B\1\1\2\15\0\1\0X\2\5€-\1\0\0009\1\1\0015\3\2\0B\1\2\1X\1\2€\18\1\0\0B\1\1\1K\0\1\0\0À\1\0\1\vselect\2\fconfirm\fvisibleì\a\1\0\v\0.\0q6\0\0\0'\2\1\0B\0\2\0026\1\2\0006\3\0\0'\4\3\0B\1\3\0039\3\4\0005\5\6\0005\6\5\0=\6\a\0055\6\b\0=\6\t\0059\6\n\0009\6\v\0064\b\5\0005\t\f\0>\t\1\b5\t\r\0>\t\2\b5\t\14\0>\t\3\b5\t\15\0>\t\4\bB\6\2\2=\6\v\5\15\0\1\0X\6/€5\6\16\0004\a\f\0009\b\17\0029\b\18\b>\b\1\a9\b\17\0029\b\19\b>\b\2\a9\b\n\0009\b\20\b9\b\21\b>\b\3\a9\b\n\0009\b\20\b9\b\22\b>\b\4\a9\b\n\0009\b\20\b9\b\19\b>\b\5\a9\b\n\0009\b\20\b9\b\23\b>\b\6\a9\b\n\0009\b\20\b9\b\24\b>\b\a\a9\b\n\0009\b\20\b9\b\25\b>\b\b\a9\b\n\0009\b\20\b9\b\26\b>\b\t\a9\b\n\0009\b\20\b9\b\27\b>\b\n\a9\b\n\0009\b\20\b9\b\28\b>\b\v\a=\a\17\6\14\0\6\0X\a\1€+\6\0\0=\6\29\0055\6 \0009\a\30\0009\a\31\aB\a\1\2=\a!\0069\a\30\0009\a\"\aB\a\1\2=\a#\0069\a\30\0009\a$\a)\tüÿB\a\2\2=\a%\0069\a\30\0009\a$\a)\t\4\0B\a\2\2=\a&\0069\a\30\0009\a'\aB\a\1\2=\a(\0069\a\30\0009\a)\aB\a\1\2=\a*\0069\a\30\0003\t+\0005\n,\0B\a\3\2=\a-\6=\6\30\5B\3\2\0012\0\0€K\0\1\0\t<CR>\1\3\0\0\6i\6s\0\n<C-e>\nclose\14<C-Space>\rcomplete\n<C-f>\n<C-d>\16scroll_docs\n<C-n>\21select_next_item\n<C-p>\1\0\a\14<C-Space>\0\n<C-f>\0\n<C-e>\0\n<C-d>\0\t<CR>\0\n<C-n>\0\n<C-p>\0\21select_prev_item\fmapping\fsorting\norder\vlength\14sort_text\tkind\rlocality\18recently_used\nexact\voffset\fcompare\nscore\15prioritize\16comparators\1\0\2\16comparators\0\20priority_weight\3\2\1\0\1\tname\tpath\1\0\1\tname\vbuffer\1\0\1\tname\rnvim_lsp\1\0\1\tname\fcopilot\fsources\vconfig\17experimental\1\0\1\15ghost_text\1\15completion\1\0\5\fmapping\0\fsources\0\fsorting\0\17experimental\0\15completion\0\1\0\1\17autocomplete\1\nsetup\16copilot_cmp\npcall\bcmp\frequire\0" },
     loaded = true,
     only_config = true,
     path = "/Users/antonminashkin/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -146,7 +146,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    config = { "\27LJ\2\n‘\2\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\14highlight\1\0\2\venable\2&additional_vim_regex_highlighting\1\21ensure_installed\1\0\4\17sync_install\1\14highlight\0\17auto_install\2\21ensure_installed\0\1\t\0\0\6c\blua\bvim\vpython\15javascript\tjson\tyaml\rmarkdown\nsetup\28nvim-treesitter.configs\frequire\0" },
+    config = { "\27LJ\2\n‘\2\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\14highlight\1\0\2&additional_vim_regex_highlighting\1\venable\2\21ensure_installed\1\0\4\17auto_install\2\21ensure_installed\0\17sync_install\1\14highlight\0\1\t\0\0\6c\blua\bvim\vpython\15javascript\tjson\tyaml\rmarkdown\nsetup\28nvim-treesitter.configs\frequire\0" },
     loaded = true,
     path = "/Users/antonminashkin/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -182,24 +182,24 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
-try_loadstring("\27LJ\2\nÆ\a\0\0\v\0-\0o6\0\0\0'\2\1\0B\0\2\0026\1\2\0006\3\0\0'\4\3\0B\1\3\0039\3\4\0005\5\v\0009\6\5\0009\6\6\0064\b\5\0005\t\a\0>\t\1\b5\t\b\0>\t\2\b5\t\t\0>\t\3\b5\t\n\0>\t\4\bB\6\2\2=\6\6\5\15\0\1\0X\6/€5\6\f\0004\a\f\0009\b\r\0029\b\14\b>\b\1\a9\b\r\0029\b\15\b>\b\2\a9\b\5\0009\b\16\b9\b\17\b>\b\3\a9\b\5\0009\b\16\b9\b\18\b>\b\4\a9\b\5\0009\b\16\b9\b\15\b>\b\5\a9\b\5\0009\b\16\b9\b\19\b>\b\6\a9\b\5\0009\b\16\b9\b\20\b>\b\a\a9\b\5\0009\b\16\b9\b\21\b>\b\b\a9\b\5\0009\b\16\b9\b\22\b>\b\t\a9\b\5\0009\b\16\b9\b\23\b>\b\n\a9\b\5\0009\b\16\b9\b\24\b>\b\v\a=\a\r\6\14\0\6\0X\a\1€+\6\0\0=\6\25\0055\6\28\0009\a\26\0009\a\27\aB\a\1\2=\a\29\0069\a\26\0009\a\30\aB\a\1\2=\a\31\0069\a\26\0009\a \a)\tüÿB\a\2\2=\a!\0069\a\26\0009\a \a)\t\4\0B\a\2\2=\a\"\0069\a\26\0009\a#\aB\a\1\2=\a$\0069\a\26\0009\a%\aB\a\1\2=\a&\0069\a\26\0009\a'\a5\t*\0009\n(\0009\n)\n=\n+\tB\a\2\2=\a,\6=\6\26\5B\3\2\1K\0\1\0\t<CR>\rbehavior\1\0\2\vselect\2\rbehavior\0\vInsert\20ConfirmBehavior\fconfirm\n<C-e>\nclose\14<C-Space>\rcomplete\n<C-f>\n<C-d>\16scroll_docs\n<C-n>\21select_next_item\n<C-p>\1\0\a\n<C-e>\0\n<C-d>\0\t<CR>\0\n<C-n>\0\n<C-p>\0\14<C-Space>\0\n<C-f>\0\21select_prev_item\fmapping\fsorting\norder\vlength\14sort_text\tkind\rlocality\18recently_used\nexact\voffset\fcompare\nscore\15prioritize\16comparators\1\0\2\20priority_weight\3\2\16comparators\0\1\0\3\fsources\0\fsorting\0\fmapping\0\1\0\1\tname\tpath\1\0\1\tname\vbuffer\1\0\1\tname\rnvim_lsp\1\0\1\tname\fcopilot\fsources\vconfig\nsetup\16copilot_cmp\npcall\bcmp\frequire\0", "config", "nvim-cmp")
+try_loadstring("\27LJ\2\nX\0\1\4\1\3\0\r-\1\0\0009\1\0\1B\1\1\2\15\0\1\0X\2\5€-\1\0\0009\1\1\0015\3\2\0B\1\2\1X\1\2€\18\1\0\0B\1\1\1K\0\1\0\0À\1\0\1\vselect\2\fconfirm\fvisibleì\a\1\0\v\0.\0q6\0\0\0'\2\1\0B\0\2\0026\1\2\0006\3\0\0'\4\3\0B\1\3\0039\3\4\0005\5\6\0005\6\5\0=\6\a\0055\6\b\0=\6\t\0059\6\n\0009\6\v\0064\b\5\0005\t\f\0>\t\1\b5\t\r\0>\t\2\b5\t\14\0>\t\3\b5\t\15\0>\t\4\bB\6\2\2=\6\v\5\15\0\1\0X\6/€5\6\16\0004\a\f\0009\b\17\0029\b\18\b>\b\1\a9\b\17\0029\b\19\b>\b\2\a9\b\n\0009\b\20\b9\b\21\b>\b\3\a9\b\n\0009\b\20\b9\b\22\b>\b\4\a9\b\n\0009\b\20\b9\b\19\b>\b\5\a9\b\n\0009\b\20\b9\b\23\b>\b\6\a9\b\n\0009\b\20\b9\b\24\b>\b\a\a9\b\n\0009\b\20\b9\b\25\b>\b\b\a9\b\n\0009\b\20\b9\b\26\b>\b\t\a9\b\n\0009\b\20\b9\b\27\b>\b\n\a9\b\n\0009\b\20\b9\b\28\b>\b\v\a=\a\17\6\14\0\6\0X\a\1€+\6\0\0=\6\29\0055\6 \0009\a\30\0009\a\31\aB\a\1\2=\a!\0069\a\30\0009\a\"\aB\a\1\2=\a#\0069\a\30\0009\a$\a)\tüÿB\a\2\2=\a%\0069\a\30\0009\a$\a)\t\4\0B\a\2\2=\a&\0069\a\30\0009\a'\aB\a\1\2=\a(\0069\a\30\0009\a)\aB\a\1\2=\a*\0069\a\30\0003\t+\0005\n,\0B\a\3\2=\a-\6=\6\30\5B\3\2\0012\0\0€K\0\1\0\t<CR>\1\3\0\0\6i\6s\0\n<C-e>\nclose\14<C-Space>\rcomplete\n<C-f>\n<C-d>\16scroll_docs\n<C-n>\21select_next_item\n<C-p>\1\0\a\14<C-Space>\0\n<C-f>\0\n<C-e>\0\n<C-d>\0\t<CR>\0\n<C-n>\0\n<C-p>\0\21select_prev_item\fmapping\fsorting\norder\vlength\14sort_text\tkind\rlocality\18recently_used\nexact\voffset\fcompare\nscore\15prioritize\16comparators\1\0\2\16comparators\0\20priority_weight\3\2\1\0\1\tname\tpath\1\0\1\tname\vbuffer\1\0\1\tname\rnvim_lsp\1\0\1\tname\fcopilot\fsources\vconfig\17experimental\1\0\1\15ghost_text\1\15completion\1\0\5\fmapping\0\fsources\0\fsorting\0\17experimental\0\15completion\0\1\0\1\17autocomplete\1\nsetup\16copilot_cmp\npcall\bcmp\frequire\0", "config", "nvim-cmp")
 time([[Config for nvim-cmp]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+try_loadstring("\27LJ\2\n‘\2\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\14highlight\1\0\2&additional_vim_regex_highlighting\1\venable\2\21ensure_installed\1\0\4\17auto_install\2\21ensure_installed\0\17sync_install\1\14highlight\0\1\t\0\0\6c\blua\bvim\vpython\15javascript\tjson\tyaml\rmarkdown\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\nt\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\tview\1\0\1\tview\0\nfloat\1\0\1\nfloat\0\1\0\1\venable\2\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
 time([[Config for nvim-tree.lua]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\n‘\2\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\14highlight\1\0\2\venable\2&additional_vim_regex_highlighting\1\21ensure_installed\1\0\4\17sync_install\1\14highlight\0\17auto_install\2\21ensure_installed\0\1\t\0\0\6c\blua\bvim\vpython\15javascript\tjson\tyaml\rmarkdown\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
-time([[Config for which-key.nvim]], false)
 -- Config for: nvim
 time([[Config for nvim]], true)
 try_loadstring("\27LJ\2\nu\0\0\3\0\a\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0009\0\6\0'\2\1\0B\0\2\1K\0\1\0\16colorscheme\bcmd\bvim\1\0\1\fflavour\nmocha\nsetup\15catppuccin\frequire\0", "config", "nvim")
 time([[Config for nvim]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
+time([[Config for which-key.nvim]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
@@ -216,7 +216,7 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'copilot.lua', 'copilot-cmp'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'copilot-cmp', 'copilot.lua'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 

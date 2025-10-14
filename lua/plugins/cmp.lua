@@ -9,6 +9,9 @@ return {
     local cmp = require('cmp')
     local has_ccmp, copilot_cmp = pcall(require, 'copilot_cmp')
     cmp.setup({
+      completion = {
+        autocomplete = false,
+      },
       experimental = {
         ghost_text = false
       },
@@ -41,10 +44,13 @@ return {
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm({
-          behavior = cmp.ConfirmBehavior.Insert,
-          select = true,
-        }),
+        ['<CR>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.confirm({ select = true })
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
       },
     })
   end,

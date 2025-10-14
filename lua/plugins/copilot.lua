@@ -9,7 +9,7 @@ return {
         enabled = true,
         auto_trigger = true,
         keymap = {
-          accept = "<CR>",
+          accept = "<Tab>",
           dismiss = "<C-e>",
         },
       },
