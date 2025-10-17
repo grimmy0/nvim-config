@@ -80,31 +80,25 @@ _G.packer_plugins = {
     url = "https://github.com/giuxtaposition/blink-cmp-copilot"
   },
   ["blink.cmp"] = {
-    config = { "\27LJ\2\næ\3\0\0\6\0\20\0\0236\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3=\3\t\0025\3\n\0=\3\v\0025\3\r\0005\4\f\0=\4\14\0035\4\16\0005\5\15\0=\5\17\4=\4\18\3=\3\19\2B\0\2\1K\0\1\0\fsources\14providers\fcopilot\1\0\1\fcopilot\0\1\0\2\vmodule\22blink-cmp-copilot\tname\fcopilot\fdefault\1\0\2\14providers\0\fdefault\0\1\5\0\0\fcopilot\blsp\vbuffer\tpath\vkeymap\1\0\1\vpreset\14super-tab\15completion\1\0\3\15completion\0\fsources\0\vkeymap\0\ftrigger\1\0\1\20show_on_keyword\2\15ghost_text\1\0\2\15ghost_text\0\ftrigger\0\1\0\5\27show_without_selection\2\24show_with_selection\2\19show_with_menu\2\22show_without_menu\2\fenabled\2\nsetup\14blink.cmp\frequire\0" },
+    config = { "\27LJ\2\næ\3\0\0\6\0\20\0\0236\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3=\3\t\0025\3\n\0=\3\v\0025\3\r\0005\4\f\0=\4\14\0035\4\16\0005\5\15\0=\5\17\4=\4\18\3=\3\19\2B\0\2\1K\0\1\0\fsources\14providers\fcopilot\1\0\1\fcopilot\0\1\0\2\vmodule\22blink-cmp-copilot\tname\fcopilot\fdefault\1\0\2\fdefault\0\14providers\0\1\5\0\0\fcopilot\blsp\vbuffer\tpath\vkeymap\1\0\1\vpreset\14super-tab\15completion\1\0\3\fsources\0\15completion\0\vkeymap\0\ftrigger\1\0\1\20show_on_keyword\2\15ghost_text\1\0\2\ftrigger\0\15ghost_text\0\1\0\5\24show_with_selection\2\19show_with_menu\2\22show_without_menu\2\fenabled\2\27show_without_selection\2\nsetup\14blink.cmp\frequire\0" },
     loaded = true,
     path = "/Users/antonminashkin/.local/share/nvim/site/pack/packer/start/blink.cmp",
     url = "https://github.com/saghen/blink.cmp"
   },
   ["codecompanion.nvim"] = {
-    config = { "\27LJ\2\ne\0\0\4\0\5\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0005\3\4\0D\0\3\0\1\0\1\vclient\15gemini-cli\vgemini\vextend\27codecompanion.adapters\frequireã\1\1\0\6\0\14\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\6\0005\4\4\0003\5\3\0=\5\5\4=\4\a\3=\3\t\0025\3\v\0005\4\n\0=\4\f\3=\3\r\2B\0\2\1K\0\1\0\15strategies\nagent\1\0\1\nagent\0\1\0\1\fadapter\15gemini_cli\radapters\1\0\2\15strategies\0\radapters\0\thttp\1\0\1\thttp\0\15gemini_cli\1\0\1\15gemini_cli\0\0\nsetup\18codecompanion\frequire\0" },
+    config = { "\27LJ\2\ne\0\0\4\0\5\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0005\3\4\0D\0\3\0\1\0\1\vclient\15gemini-cli\vgemini\vextend\27codecompanion.adapters\frequireã\1\1\0\6\0\14\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\6\0005\4\4\0003\5\3\0=\5\5\4=\4\a\3=\3\t\0025\3\v\0005\4\n\0=\4\f\3=\3\r\2B\0\2\1K\0\1\0\15strategies\nagent\1\0\1\nagent\0\1\0\1\fadapter\15gemini_cli\radapters\1\0\2\radapters\0\15strategies\0\thttp\1\0\1\thttp\0\15gemini_cli\1\0\1\15gemini_cli\0\0\nsetup\18codecompanion\frequire\0" },
     loaded = true,
     path = "/Users/antonminashkin/.local/share/nvim/site/pack/packer/start/codecompanion.nvim",
     url = "https://github.com/olimorris/codecompanion.nvim"
   },
   ["copilot.lua"] = {
     commands = { "Copilot" },
-    config = { "\27LJ\2\ní\1\0\0\4\0\r\0\0196\0\0\0009\0\1\0009\0\2\0\15\0\0\0X\1\1€K\0\1\0006\0\3\0'\2\4\0B\0\2\0029\0\5\0005\2\a\0005\3\6\0=\3\b\0025\3\t\0=\3\n\0025\3\v\0=\3\f\2B\0\2\1K\0\1\0\14filetypes\1\0\3\20TelescopePrompt\1\6*\2\rNvimTree\1\npanel\1\0\1\fenabled\1\15suggestion\1\0\3\15suggestion\0\14filetypes\0\npanel\0\1\0\1\fenabled\1\nsetup\fcopilot\frequire\rheadless\6g\bvim\0" },
+    config = { "\27LJ\2\ní\1\0\0\4\0\r\0\0196\0\0\0009\0\1\0009\0\2\0\15\0\0\0X\1\1€K\0\1\0006\0\3\0'\2\4\0B\0\2\0029\0\5\0005\2\a\0005\3\6\0=\3\b\0025\3\t\0=\3\n\0025\3\v\0=\3\f\2B\0\2\1K\0\1\0\14filetypes\1\0\3\6*\2\rNvimTree\1\20TelescopePrompt\1\npanel\1\0\1\fenabled\1\15suggestion\1\0\3\14filetypes\0\npanel\0\15suggestion\0\1\0\1\fenabled\1\nsetup\fcopilot\frequire\rheadless\6g\bvim\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
     path = "/Users/antonminashkin/.local/share/nvim/site/pack/packer/opt/copilot.lua",
     url = "https://github.com/zbirenbaum/copilot.lua"
-  },
-  ["markview.nvim"] = {
-    config = { "\27LJ\2\n:\0\2\5\0\3\0\a6\2\0\0'\4\1\0B\2\2\0029\2\2\2\18\4\1\0B\2\2\1K\0\1\0\nsetup\rmarkview\frequire\0" },
-    loaded = true,
-    path = "/Users/antonminashkin/.local/share/nvim/site/pack/packer/start/markview.nvim",
-    url = "https://github.com/OXY2DEV/markview.nvim"
   },
   ["mason-tool-installer.nvim"] = {
     loaded = true,
@@ -140,7 +134,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    config = { "\27LJ\2\n¡\2\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\14highlight\1\0\2&additional_vim_regex_highlighting\1\venable\2\21ensure_installed\1\0\4\17sync_install\1\21ensure_installed\0\14highlight\0\17auto_install\2\1\n\0\0\6c\blua\bvim\vpython\15javascript\tjson\tyaml\rmarkdown\20markdown_inline\nsetup\28nvim-treesitter.configs\frequire\0" },
+    config = { "\27LJ\2\n¡\2\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\14highlight\1\0\2&additional_vim_regex_highlighting\1\venable\2\21ensure_installed\1\0\4\21ensure_installed\0\14highlight\0\17auto_install\2\17sync_install\1\1\n\0\0\6c\blua\bvim\vpython\15javascript\tjson\tyaml\rmarkdown\20markdown_inline\nsetup\28nvim-treesitter.configs\frequire\0" },
     loaded = true,
     path = "/Users/antonminashkin/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -161,7 +155,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["render-markdown.nvim"] = {
-    config = { "\27LJ\2\nq\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\tsign\1\0\1\fenabled\1\1\0\2\17render_modes\2\tsign\0\nsetup\20render-markdown\frequire\0" },
+    config = { "\27LJ\2\n«\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\tsign\1\0\1\fenabled\1\15file_types\1\0\3\tsign\0\17render_modes\2\15file_types\0\1\3\0\0\rmarkdown\18codecompanion\nsetup\20render-markdown\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -182,38 +176,34 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: markview.nvim
-time([[Config for markview.nvim]], true)
-try_loadstring("\27LJ\2\n:\0\2\5\0\3\0\a6\2\0\0'\4\1\0B\2\2\0029\2\2\2\18\4\1\0B\2\2\1K\0\1\0\nsetup\rmarkview\frequire\0", "config", "markview.nvim")
-time([[Config for markview.nvim]], false)
--- Config for: mini.diff
-time([[Config for mini.diff]], true)
-try_loadstring("\27LJ\2\nm\0\0\6\0\a\0\v6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\5\0009\4\3\0009\4\4\4B\4\1\2=\4\6\3B\1\2\1K\0\1\0\vsource\1\0\1\vsource\0\tnone\15gen_source\nsetup\14mini.diff\frequire\0", "config", "mini.diff")
-time([[Config for mini.diff]], false)
--- Config for: blink.cmp
-time([[Config for blink.cmp]], true)
-try_loadstring("\27LJ\2\næ\3\0\0\6\0\20\0\0236\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3=\3\t\0025\3\n\0=\3\v\0025\3\r\0005\4\f\0=\4\14\0035\4\16\0005\5\15\0=\5\17\4=\4\18\3=\3\19\2B\0\2\1K\0\1\0\fsources\14providers\fcopilot\1\0\1\fcopilot\0\1\0\2\vmodule\22blink-cmp-copilot\tname\fcopilot\fdefault\1\0\2\14providers\0\fdefault\0\1\5\0\0\fcopilot\blsp\vbuffer\tpath\vkeymap\1\0\1\vpreset\14super-tab\15completion\1\0\3\15completion\0\fsources\0\vkeymap\0\ftrigger\1\0\1\20show_on_keyword\2\15ghost_text\1\0\2\15ghost_text\0\ftrigger\0\1\0\5\27show_without_selection\2\24show_with_selection\2\19show_with_menu\2\22show_without_menu\2\fenabled\2\nsetup\14blink.cmp\frequire\0", "config", "blink.cmp")
-time([[Config for blink.cmp]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
-time([[Config for which-key.nvim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\n¡\2\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\14highlight\1\0\2&additional_vim_regex_highlighting\1\venable\2\21ensure_installed\1\0\4\17sync_install\1\21ensure_installed\0\14highlight\0\17auto_install\2\1\n\0\0\6c\blua\bvim\vpython\15javascript\tjson\tyaml\rmarkdown\20markdown_inline\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
+try_loadstring("\27LJ\2\n¡\2\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\14highlight\1\0\2&additional_vim_regex_highlighting\1\venable\2\21ensure_installed\1\0\4\21ensure_installed\0\14highlight\0\17auto_install\2\17sync_install\1\1\n\0\0\6c\blua\bvim\vpython\15javascript\tjson\tyaml\rmarkdown\20markdown_inline\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
 time([[Config for nvim-treesitter]], false)
 -- Config for: codecompanion.nvim
 time([[Config for codecompanion.nvim]], true)
-try_loadstring("\27LJ\2\ne\0\0\4\0\5\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0005\3\4\0D\0\3\0\1\0\1\vclient\15gemini-cli\vgemini\vextend\27codecompanion.adapters\frequireã\1\1\0\6\0\14\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\6\0005\4\4\0003\5\3\0=\5\5\4=\4\a\3=\3\t\0025\3\v\0005\4\n\0=\4\f\3=\3\r\2B\0\2\1K\0\1\0\15strategies\nagent\1\0\1\nagent\0\1\0\1\fadapter\15gemini_cli\radapters\1\0\2\15strategies\0\radapters\0\thttp\1\0\1\thttp\0\15gemini_cli\1\0\1\15gemini_cli\0\0\nsetup\18codecompanion\frequire\0", "config", "codecompanion.nvim")
+try_loadstring("\27LJ\2\ne\0\0\4\0\5\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0005\3\4\0D\0\3\0\1\0\1\vclient\15gemini-cli\vgemini\vextend\27codecompanion.adapters\frequireã\1\1\0\6\0\14\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\6\0005\4\4\0003\5\3\0=\5\5\4=\4\a\3=\3\t\0025\3\v\0005\4\n\0=\4\f\3=\3\r\2B\0\2\1K\0\1\0\15strategies\nagent\1\0\1\nagent\0\1\0\1\fadapter\15gemini_cli\radapters\1\0\2\radapters\0\15strategies\0\thttp\1\0\1\thttp\0\15gemini_cli\1\0\1\15gemini_cli\0\0\nsetup\18codecompanion\frequire\0", "config", "codecompanion.nvim")
 time([[Config for codecompanion.nvim]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\nt\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\tview\1\0\1\tview\0\nfloat\1\0\1\nfloat\0\1\0\1\venable\2\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
 time([[Config for nvim-tree.lua]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14which-key\frequire\0", "config", "which-key.nvim")
+time([[Config for which-key.nvim]], false)
+-- Config for: blink.cmp
+time([[Config for blink.cmp]], true)
+try_loadstring("\27LJ\2\næ\3\0\0\6\0\20\0\0236\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\b\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3=\3\t\0025\3\n\0=\3\v\0025\3\r\0005\4\f\0=\4\14\0035\4\16\0005\5\15\0=\5\17\4=\4\18\3=\3\19\2B\0\2\1K\0\1\0\fsources\14providers\fcopilot\1\0\1\fcopilot\0\1\0\2\vmodule\22blink-cmp-copilot\tname\fcopilot\fdefault\1\0\2\fdefault\0\14providers\0\1\5\0\0\fcopilot\blsp\vbuffer\tpath\vkeymap\1\0\1\vpreset\14super-tab\15completion\1\0\3\fsources\0\15completion\0\vkeymap\0\ftrigger\1\0\1\20show_on_keyword\2\15ghost_text\1\0\2\ftrigger\0\15ghost_text\0\1\0\5\24show_with_selection\2\19show_with_menu\2\22show_without_menu\2\fenabled\2\27show_without_selection\2\nsetup\14blink.cmp\frequire\0", "config", "blink.cmp")
+time([[Config for blink.cmp]], false)
 -- Config for: nvim
 time([[Config for nvim]], true)
 try_loadstring("\27LJ\2\nu\0\0\3\0\a\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0009\0\6\0'\2\1\0B\0\2\1K\0\1\0\16colorscheme\bcmd\bvim\1\0\1\fflavour\nmocha\nsetup\15catppuccin\frequire\0", "config", "nvim")
 time([[Config for nvim]], false)
+-- Config for: mini.diff
+time([[Config for mini.diff]], true)
+try_loadstring("\27LJ\2\nm\0\0\6\0\a\0\v6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\5\0009\4\3\0009\4\4\4B\4\1\2=\4\6\3B\1\2\1K\0\1\0\vsource\1\0\1\vsource\0\tnone\15gen_source\nsetup\14mini.diff\frequire\0", "config", "mini.diff")
+time([[Config for mini.diff]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
@@ -230,8 +220,8 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType codecompanion ++once lua require("packer.load")({'render-markdown.nvim'}, { ft = "codecompanion" }, _G.packer_plugins)]]
 vim.cmd [[au FileType markdown ++once lua require("packer.load")({'render-markdown.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType codecompanion ++once lua require("packer.load")({'render-markdown.nvim'}, { ft = "codecompanion" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
