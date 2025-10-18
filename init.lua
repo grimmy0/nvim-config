@@ -1,5 +1,8 @@
 vim.g.mapleader = ' '
 
+-- Load compatibility shims early to avoid deprecation warnings
+pcall(require, 'compat')
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20'
