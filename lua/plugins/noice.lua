@@ -1,6 +1,6 @@
 return {
   'folke/noice.nvim',
-  requires = {
+  dependencies = {
     'MunifTanjim/nui.nvim',
     -- optional, but recommended for a nice notifications view
     'rcarriga/nvim-notify',

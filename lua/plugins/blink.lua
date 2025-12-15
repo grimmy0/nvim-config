@@ -1,9 +1,9 @@
 return {
   'saghen/blink.cmp',
-  requires = {
+  dependencies = {
     'giuxtaposition/blink-cmp-copilot',
   },
-  tag = '*',
+  version = '*',
   config = function()
     require('blink.cmp').setup({
       completion = {

@@ -1,5 +1,5 @@
-return function(use)
-  use { 'williamboman/mason.nvim' }
-  use { 'WhoIsSethDaniel/mason-tool-installer.nvim' }
-  use { 'neovim/nvim-lspconfig' }
-end
+return {
+  { 'williamboman/mason.nvim' },
+  { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
+  { 'neovim/nvim-lspconfig' },
+}
