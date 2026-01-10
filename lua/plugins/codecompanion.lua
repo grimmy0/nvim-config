@@ -7,16 +7,18 @@ return {
   config = function()
     require("codecompanion").setup({
       adapters = {
-        http = {
+        acp = {
           gemini_cli = function()
-            return require("codecompanion.adapters").extend("gemini", {
-              client = "gemini-cli",
+            return require("codecompanion.adapters").extend("gemini_cli", {
+              defaults = {
+                auth_method = "oauth-personal", -- "oauth-personal"|"gemini-api-key"|"vertex-ai"
+              },
             })
           end,
         },
       },
-      strategies = {
-        agent = {
+      interactions = {
+        chat = {
           adapter = "gemini_cli",
         },
       },
