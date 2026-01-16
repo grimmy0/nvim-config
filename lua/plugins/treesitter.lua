@@ -16,7 +16,7 @@ return {
 
     local desired = { "c", "lua", "vim", "python", "javascript", "json", "yaml", "markdown", "markdown_inline" }
     local installed = {}
-    for _, lang in ipairs(require('nvim-treesitter').get_installed()) do
+    for _, lang in ipairs(require('nvim-treesitter.info').installed_parsers()) do
       installed[lang] = true
     end
     local missing = {}
