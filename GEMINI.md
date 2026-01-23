@@ -17,7 +17,7 @@ Key features and technologies used:
     - `copilot.lua` & `codecompanion.nvim`: AI coding assistants (GitHub Copilot & Gemini CLI).
     - `mason.nvim`: To manage LSP servers, formatters, and linters.
 - **Language Support**:
-    - The configuration has built-in LSP support for Python using `pyright` and `ruff`.
+    - The configuration has built-in LSP support for Python using `basedpyright` and `ruff`.
 
 ## Building and Running
 

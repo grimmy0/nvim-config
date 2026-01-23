@@ -8,7 +8,7 @@ end
 local ok_mti, mti = pcall(require, 'mason-tool-installer')
 if ok_mti then
   mti.setup({
-    ensure_installed = { 'pyright', 'ruff' },
+    ensure_installed = { 'basedpyright', 'ruff' },
     auto_update = false,
     run_on_start = true,
     start_delay = 0,
@@ -45,12 +45,12 @@ vim.lsp.config('ruff', {
   capabilities = capabilities,
 })
 
--- Pyright
-vim.lsp.config('pyright', {
+-- BasedPyright
+vim.lsp.config('basedpyright', {
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
 -- Enable filetype-based activation
 vim.lsp.enable('ruff')
-vim.lsp.enable('pyright')
+vim.lsp.enable('basedpyright')
