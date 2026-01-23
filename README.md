@@ -16,6 +16,7 @@ A personalized Neovim setup configured in Lua. This configuration is built aroun
 - **Syntax & Highlighting**: [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for robust parsing.
 - **AI Assistance**: [codecompanion.nvim](https://github.com/olimorris/codecompanion.nvim) (Gemini CLI) and [copilot.lua](https://github.com/zbirenbaum/copilot.lua).
 - **LSP**: Configured via `mason.nvim`. Includes the "Modern Stack" for Python: `basedpyright` and `ruff`.
+- **Python**: Easy virtual environment switching with [venv-selector.nvim](https://github.com/linux-cultist/venv-selector.nvim).
 - **UI**: [Catppuccin Mocha](https://github.com/catppuccin/nvim) theme and [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) statusline.
 - **Terminal**: Floating terminal support with [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim).
 - **Debugging**: Full DAP support via [nvim-dap](https://github.com/mfussenegger/nvim-dap).
@@ -46,6 +47,7 @@ The `<leader>` key is set to `space`. For a full list of commands, see the [CHEA
 | `<leader>fg`    | Live grep (`Telescope`)              |
 | `<leader>cc`    | AI Chat (`CodeCompanion`)            |
 | `<leader>t`     | Toggle Terminal (`ToggleTerm`)       |
+| `<leader>vs`    | Select VirtualEnv (`VenvSelector`)   |
 | `gd`            | Go to definition (LSP)               |
 | `<F5>`          | Debug: Run/Continue (DAP)            |
 

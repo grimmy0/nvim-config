@@ -80,6 +80,12 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 | `Esc` | Exit Terminal Mode | `toggleterm.nvim` |
 | `jk` | Exit Terminal Mode | `toggleterm.nvim` |
 
+## 🐍 Python Environment (`venv-selector.nvim`)
+
+| Key | Description | Plugin |
+| :--- | :--- | :--- |
+| `<leader>vs` | Select Virtual Environment | `venv-selector.nvim` |
+
 ## 💬 Comments (`Comment.nvim`)
 
 These are the default mappings provided by the plugin.
