@@ -72,6 +72,14 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 | `<leader>cc` | Open Chat | `codecompanion.nvim` |
 | `<leader>cA` | Open Actions | `codecompanion.nvim` |
 
+## 💻 Terminal (`toggleterm.nvim`)
+
+| Key | Description | Plugin |
+| :--- | :--- | :--- |
+| `<leader>t` | Toggle Floating Terminal | `toggleterm.nvim` |
+| `Esc` | Exit Terminal Mode | `toggleterm.nvim` |
+| `jk` | Exit Terminal Mode | `toggleterm.nvim` |
+
 ## 💬 Comments (`Comment.nvim`)
 
 These are the default mappings provided by the plugin.
