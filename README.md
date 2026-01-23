@@ -1,12 +1,10 @@
-# My Neovim Configuration
-
-A personalized Neovim setup configured in Lua. This configuration is built around `packer.nvim` for plugin management and aims for a modern and efficient development experience.
-
-*(Optional: Add a screenshot of your editor here)*
-
-## Features
-
-*   **Plugin Manager**: Uses [packer.nvim](https://github.com/wbthomason/packer.nvim) for fast, declarative plugin management.
+# Neovim Config
+ 
+A personalized Neovim setup configured in Lua. This configuration is built around `lazy.nvim` for plugin management and aims for a modern and efficient development experience.
+ 
+ ## Features
+ 
+ *   **Plugin Manager**: Uses [lazy.nvim](https://github.com/folke/lazy.nvim) for fast, declarative plugin management.
 *   **Fast Fuzzy Finding**: [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) is integrated for finding files, buffers, and searching through code.
 *   **File Explorer**: [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) provides a clean and simple file tree.
 *   **Syntax & Highlighting**: Leverages [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for more accurate and robust syntax highlighting.
