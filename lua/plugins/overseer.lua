@@ -1,7 +1,9 @@
 return {
   'stevearc/overseer.nvim',
   config = function()
-    require('overseer').setup()
+    require('overseer').setup({
+      templates = { "builtin", "user.poetry" },
+    })
 
     -- Keybindings
     vim.keymap.set('n', '<leader>or', '<cmd>OverseerRun<cr>', { desc = 'Run Task' })
