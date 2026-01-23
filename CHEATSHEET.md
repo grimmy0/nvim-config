@@ -86,6 +86,15 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 | :--- | :--- | :--- |
 | `<leader>vs` | Select Virtual Environment | `venv-selector.nvim` |
 
+## 🏗️ Task Runner (`overseer.nvim`)
+
+| Key | Description | Plugin |
+| :--- | :--- | :--- |
+| `<leader>or` | Run Task | `overseer.nvim` |
+| `<leader>ot` | Toggle Task List | `overseer.nvim` |
+| `<leader>oa` | Task Action | `overseer.nvim` |
+| `<leader>oi` | Overseer Info | `overseer.nvim` |
+
 ## 💬 Comments (`Comment.nvim`)
 
 These are the default mappings provided by the plugin.
