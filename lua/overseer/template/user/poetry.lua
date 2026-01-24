@@ -16,6 +16,30 @@ local function build_tasks(root_dir)
       end,
     },
     {
+      name = "Poetry Run",
+      params = {
+        args = {
+          type = "list",
+          subtype = { type = "string" },
+          delimiter = " ",
+          optional = true,
+          default = {},
+          desc = "Arguments passed to `poetry run`",
+        },
+      },
+      builder = function(params)
+        local cmd = { "poetry", "run" }
+        if params.args and #params.args > 0 then
+          vim.list_extend(cmd, params.args)
+        end
+        return {
+          cmd = cmd,
+          cwd = root_dir,
+          components = components,
+        }
+      end,
+    },
+    {
       name = "Poetry Update",
       builder = function()
         return {
