@@ -1,15 +1,13 @@
 return {
   'stevearc/overseer.nvim',
-  lazy = false,
+  cmd = { 'OverseerRun', 'OverseerToggle', 'OverseerTaskAction', 'OverseerOpen', 'OverseerClose', 'OverseerShell' },
+  keys = {
+    { '<leader>or', '<cmd>OverseerRun<cr>', desc = 'Run Task' },
+    { '<leader>ot', '<cmd>OverseerToggle<cr>', desc = 'Toggle Task List' },
+    { '<leader>oa', '<cmd>OverseerTaskAction<cr>', desc = 'Task Action' },
+    { '<leader>oi', '<cmd>checkhealth overseer<cr>', desc = 'Overseer Health' },
+  },
   config = function()
-    require('overseer').setup({
-      templates = { "builtin", "poetry" },
-    })
-
-    -- Keybindings
-    vim.keymap.set('n', '<leader>or', '<cmd>OverseerRun<cr>', { desc = 'Run Task' })
-    vim.keymap.set('n', '<leader>ot', '<cmd>OverseerToggle<cr>', { desc = 'Toggle Task List' })
-    vim.keymap.set('n', '<leader>oa', '<cmd>OverseerTaskAction<cr>', { desc = 'Task Action' })
-    vim.keymap.set('n', '<leader>oi', '<cmd>OverseerInfo<cr>', { desc = 'Overseer Info' })
+    require('overseer').setup()
   end
 }

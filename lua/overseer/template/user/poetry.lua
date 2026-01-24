@@ -1,33 +1,64 @@
-local overseer = require("overseer")
+local function find_poetry_root(dir)
+  return vim.fs.find({ "pyproject.toml", "poetry.lock" }, { upward = true, path = dir })[1]
+end
 
+local function build_tasks(root_dir)
+  local components = { { "on_output_summarize", max_lines = 10 }, "default" }
+  return {
+    {
+      name = "Poetry Install",
+      builder = function()
+        return {
+          cmd = { "poetry", "install" },
+          cwd = root_dir,
+          components = components,
+        }
+      end,
+    },
+    {
+      name = "Poetry Update",
+      builder = function()
+        return {
+          cmd = { "poetry", "update" },
+          cwd = root_dir,
+          components = components,
+        }
+      end,
+    },
+    {
+      name = "Poetry Check",
+      builder = function()
+        return {
+          cmd = { "poetry", "check" },
+          cwd = root_dir,
+          components = components,
+        }
+      end,
+    },
+    {
+      name = "Poetry Shell",
+      builder = function()
+        return {
+          cmd = { "poetry", "shell" },
+          cwd = root_dir,
+          components = components,
+        }
+      end,
+    },
+  }
+end
+
+---@type overseer.TemplateFileProvider
 return {
-  generator = function(opts, cb)
-    local tasks = {
-      { name = "Poetry Install", cmd = { "poetry", "install" } },
-      { name = "Poetry Update", cmd = { "poetry", "update" } },
-      { name = "Poetry Check", cmd = { "poetry", "check" } },
-      { name = "Poetry Shell", cmd = { "poetry", "shell" } },
-    }
-
-    local ret = {}
-    for _, task in ipairs(tasks) do
-      table.insert(ret, overseer.wrap_template(task, {
-        name = task.name,
-        builder = function(params)
-          return {
-            cmd = task.cmd,
-            components = { { "on_output_summarize", max_lines = 10 }, "default" },
-          }
-        end,
-      }))
+  generator = function(search)
+    local root_file = find_poetry_root(search.dir)
+    if not root_file then
+      return {}
     end
-
-    cb(ret)
+    local root_dir = vim.fs.dirname(root_file)
+    return build_tasks(root_dir)
   end,
-  condition = {
-    callback = function(search)
-      return vim.fn.filereadable(search.dir .. "/pyproject.toml") == 1 
-             or vim.fn.filereadable(search.dir .. "/poetry.lock") == 1
-    end,
-  },
+  cache_key = function(opts)
+    return find_poetry_root(opts.dir)
+  end,
 }
