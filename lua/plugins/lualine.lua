@@ -7,7 +7,7 @@ return {
         icons_enabled = true,
         theme = 'catppuccin', -- Use the catppuccin theme
         component_separators = { left = '', right = ''},
-        section_separators = { left = '', right = 'ourke'}
+        section_separators = { left = '', right = '' }
       },
       sections = {
         lualine_a = {'mode'},
