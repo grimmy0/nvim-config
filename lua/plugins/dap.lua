@@ -42,6 +42,17 @@ return {
 
 
     -- Python specific configuration
-    require('dap-python').setup()
+    local python_path = 'python'
+    local ok_registry, registry = pcall(require, 'mason-registry')
+    if ok_registry then
+      local ok_pkg, pkg = pcall(registry.get_package, 'debugpy')
+      if ok_pkg then
+        local install_path = pkg:get_install_path()
+        if install_path and install_path ~= '' then
+          python_path = install_path .. '/venv/bin/python'
+        end
+      end
+    end
+    require('dap-python').setup(python_path)
   end
 }
