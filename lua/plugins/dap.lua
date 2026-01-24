@@ -46,8 +46,19 @@ return {
     local ok_registry, registry = pcall(require, 'mason-registry')
     if ok_registry then
       local ok_pkg, pkg = pcall(registry.get_package, 'debugpy')
-      if ok_pkg then
-        local install_path = pkg:get_install_path()
+      if ok_pkg and type(pkg) == 'table' then
+        local install_path
+        if type(pkg.get_install_path) == 'function' then
+          install_path = pkg:get_install_path()
+        elseif type(pkg.get_install_path) == 'string' then
+          install_path = pkg.get_install_path
+        elseif type(pkg.install_path) == 'function' then
+          install_path = pkg:install_path()
+        elseif type(pkg.install_path) == 'string' then
+          install_path = pkg.install_path
+        elseif type(pkg.path) == 'string' then
+          install_path = pkg.path
+        end
         if install_path and install_path ~= '' then
           python_path = install_path .. '/venv/bin/python'
         end
