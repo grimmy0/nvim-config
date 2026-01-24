@@ -43,7 +43,7 @@ print(json.dumps(sorted(scripts.keys())))
 end
 
 local function build_tasks(root_dir)
-  local components = { { "on_output_summarize", max_lines = 10 }, "default" }
+  local components = { "default" }
   local tasks = {
     {
       name = "Poetry Install",
@@ -90,7 +90,7 @@ local function build_tasks(root_dir)
 end
 
 local function add_script_tasks(tasks, scripts, root_dir)
-  local components = { { "on_output_summarize", max_lines = 10 }, "default" }
+  local components = { "default" }
   for _, script in ipairs(scripts) do
     table.insert(tasks, {
       name = "Poetry Run: " .. script,
