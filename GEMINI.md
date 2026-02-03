@@ -14,8 +14,13 @@ Key features and technologies used:
     - `nvim-tree.lua`: A file explorer sidebar.
     - `nvim-treesitter`: For advanced syntax highlighting and code parsing.
     - `blink.cmp`: High-performance autocompletion framework.
+    - `friendly-snippets`: Snippet collection used by completion.
     - `copilot.lua` & `codecompanion.nvim`: AI coding assistants (GitHub Copilot & Gemini CLI).
     - `mason.nvim`: To manage LSP servers, formatters, and linters.
+    - `conform.nvim`: Format-on-save (Ruff for Python).
+    - `nvim-lint`: Lint-on-save (Ruff + MyPy for Python).
+    - `nvim-autopairs` and `nvim-surround`: Editing helpers.
+    - `esqueleto.nvim`: File templates for new files.
 - **Language Support**:
     - The configuration has built-in LSP support for Python using `basedpyright` and `ruff`.
 

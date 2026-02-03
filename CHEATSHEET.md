@@ -37,7 +37,7 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 | `<leader>rn` | Rename symbol | `vim.lsp.buf.rename` |
 | `<leader>ca` | Code actions | `vim.lsp.buf.code_action` |
 | `gr` | Go to references | `vim.lsp.buf.references` |
-| `<leader>f` | Format buffer | `vim.lsp.buf.format` |
+| `<leader>f` | Format buffer | `conform.nvim` (fallback to LSP) |
 
 ## ✨ Completion (`blink.cmp`)
 
@@ -86,6 +86,14 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 | :--- | :--- | :--- |
 | `<leader>vs` | Select Virtual Environment | `venv-selector.nvim` |
 
+## 🧩 Templates (`esqueleto.nvim`)
+
+Templates are offered when creating new files (e.g., `*.py`, `cli.py`).
+
+| Command | Description |
+| :--- | :--- |
+| `:EsqueletoNew` | Create a new template |
+
 ## 🏗️ Task Runner (`overseer.nvim`)
 
 | Key | Description | Plugin |
@@ -107,6 +115,17 @@ These are the default mappings provided by the plugin.
 | `gb` | Toggle block comment (followed by motion) | Normal |
 | `gc` | Toggle comment on selection | Visual |
 | `gb` | Toggle block comment on selection | Visual |
+
+## 🔁 Surround (`nvim-surround`)
+
+These are the default mappings provided by the plugin.
+
+| Key | Description | Mode |
+| :--- | :--- | :--- |
+| `ys{motion}{char}` | Add surrounding | Normal |
+| `ds{char}` | Delete surrounding | Normal |
+| `cs{old}{new}` | Change surrounding | Normal |
+| `S{char}` | Surround selection | Visual |
 
 ## 🌳 Git (`gitsigns.nvim`)
 

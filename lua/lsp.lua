@@ -8,7 +8,7 @@ end
 local ok_mti, mti = pcall(require, 'mason-tool-installer')
 if ok_mti then
   mti.setup({
-    ensure_installed = { 'basedpyright', 'ruff', 'debugpy' },
+    ensure_installed = { 'basedpyright', 'ruff', 'debugpy', 'mypy' },
     auto_update = false,
     run_on_start = true,
     start_delay = 0,
@@ -26,7 +26,14 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format({ async = true }) end, bufopts)
+  vim.keymap.set('n', '<leader>f', function()
+    local ok_conform, conform = pcall(require, 'conform')
+    if ok_conform then
+      conform.format({ async = true, lsp_format = 'fallback' })
+    else
+      vim.lsp.buf.format({ async = true })
+    end
+  end, bufopts)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

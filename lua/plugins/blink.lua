@@ -2,6 +2,7 @@ return {
   'saghen/blink.cmp',
   dependencies = {
     'giuxtaposition/blink-cmp-copilot',
+    'rafamadriz/friendly-snippets',
   },
   version = '*',
   config = function()
@@ -29,7 +30,7 @@ return {
         ['<C-y>'] = { 'select_and_accept', 'fallback' },
       },
       sources = {
-        default = { 'copilot', 'lsp', 'buffer', 'path' },
+        default = { 'copilot', 'lsp', 'snippets', 'buffer', 'path' },
         providers = {
           copilot = {
             name = 'copilot',
