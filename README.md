@@ -5,6 +5,7 @@ A personalized Neovim setup configured in Lua. This configuration is built aroun
 ## 📖 Documentation
 
 - [**Cheatsheet**](./CHEATSHEET.md): A comprehensive list of all keybindings, motions, and shortcuts.
+- [**Plugin Inventory**](./PLUGINS.md): All plugins with purpose and rationale.
 - [**Project Overview**](./GEMINI.md): Details about the project structure, technologies, and conventions.
 
 ## Features
