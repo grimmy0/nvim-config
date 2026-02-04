@@ -22,6 +22,8 @@ This document provides a comprehensive list of all keybindings configured in thi
 | `<leader>bn` | Go to next buffer | `lua/keymaps.lua` |
 | `<leader>bp` | Go to previous buffer | `lua/keymaps.lua` |
 | `<leader>bb` | Go to alternate (previous used) buffer | `lua/keymaps.lua` |
+| `Ctrl-^` | Toggle previous file (alternate buffer) | Core |
+| `:b#` | Switch to alternate buffer | Core |
 
 ## 🧠 LSP (Language Server Protocol)
 
@@ -38,6 +40,18 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 | `<leader>ca` | Code actions | `vim.lsp.buf.code_action` |
 | `gr` | Go to references | `vim.lsp.buf.references` |
 | `<leader>f` | Format buffer | `conform.nvim` (fallback to LSP) |
+
+## 📌 Marks (Core)
+
+| Key | Description |
+| :--- | :--- |
+| `m{a-z}` | Set mark in current file |
+| `m{A-Z}` | Set global mark (across files) |
+| `` `{a-z}` `` | Jump to mark (exact position) |
+| `'{a-z}` | Jump to mark (line) |
+| `` `{A-Z}` `` | Jump to global mark (exact position) |
+| `'{A-Z}` | Jump to global mark (line) |
+| `:marks` | List marks |
 
 ## ✨ Completion (`blink.cmp`)
 
@@ -152,6 +166,10 @@ These are the default mappings provided by the plugin (since `setup()` is called
 | Key | Description | Plugin |
 | :--- | :--- | :--- |
 | `Space` | Leader Key | Core |
+| `Ctrl-o` | Jump back in jumplist | Core |
+| `Ctrl-i` | Jump forward in jumplist | Core |
+| `````` | Jump to last cursor position (exact) | Core |
+| `''` | Jump to last cursor position (line) | Core |
 
 ---
 
