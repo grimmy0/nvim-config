@@ -11,7 +11,7 @@ Key features and technologies used:
 - **Language**: Lua
 - **Core Plugins**:
     - `telescope.nvim`: Fuzzy finding for files, buffers, and more.
-    - `nvim-tree.lua`: A file explorer sidebar.
+    - `nvim-tree.lua`: A floating file explorer.
     - `nvim-treesitter`: For advanced syntax highlighting and code parsing.
     - `blink.cmp`: High-performance autocompletion framework.
     - `friendly-snippets`: Snippet collection used by completion.
@@ -21,6 +21,8 @@ Key features and technologies used:
     - `nvim-lint`: Lint-on-save (Ruff + MyPy for Python).
     - `nvim-autopairs` and `nvim-surround`: Editing helpers.
     - `esqueleto.nvim`: File templates for new files.
+- **Clipboard**:
+    - `init.lua` enables `clipboard=unnamedplus`, so the default register uses the system clipboard.
 - **Language Support**:
     - The configuration has built-in LSP support for Python using `basedpyright` and `ruff`.
 

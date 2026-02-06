@@ -41,6 +41,14 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 | `gr` | Go to references | `vim.lsp.buf.references` |
 | `<leader>f` | Format buffer | `conform.nvim` (fallback to LSP) |
 
+## 🚨 Diagnostics
+
+| Key | Description | Source |
+| :--- | :--- | :--- |
+| `[d` | Go to previous diagnostic | `vim.diagnostic.goto_prev` |
+| `]d` | Go to next diagnostic | `vim.diagnostic.goto_next` |
+| `<leader>dd` | Open diagnostics location list | `lua/diagnostics.lua` |
+
 ## 📌 Marks (Core)
 
 | Key | Description |
@@ -91,8 +99,13 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 | Key | Description | Plugin |
 | :--- | :--- | :--- |
 | `<leader>t` | Toggle Floating Terminal | `toggleterm.nvim` |
-| `Esc` | Exit Terminal Mode | `toggleterm.nvim` |
+| `<C-\>` | Toggle terminal (plugin open mapping) | `toggleterm.nvim` |
+| `<esc>` | Exit Terminal Mode | `toggleterm.nvim` |
 | `jk` | Exit Terminal Mode | `toggleterm.nvim` |
+| `<C-h>` | Move to left split from terminal mode | `toggleterm.nvim` |
+| `<C-j>` | Move to lower split from terminal mode | `toggleterm.nvim` |
+| `<C-k>` | Move to upper split from terminal mode | `toggleterm.nvim` |
+| `<C-l>` | Move to right split from terminal mode | `toggleterm.nvim` |
 
 ## 🐍 Python Environment (`venv-selector.nvim`)
 
@@ -116,6 +129,16 @@ Templates are offered when creating new files (e.g., `*.py`, `cli.py`).
 | `<leader>ot` | Toggle Task List | `overseer.nvim` |
 | `<leader>oa` | Task Action | `overseer.nvim` |
 | `<leader>oi` | Overseer Health | `overseer.nvim` |
+
+## 📋 Clipboard
+
+This config enables `clipboard=unnamedplus`, so regular yanks/pastes use the system clipboard.
+
+| Key | Description | Register |
+| :--- | :--- | :--- |
+| `y`, `yy`, `p`, `P` | Use system clipboard by default | `"` -> `+` |
+| `"+y` / `"+p` | Explicit system clipboard operations | `+` |
+| `"_d` / `"_x` / `"_c` | Delete/change without overwriting clipboard | `_` |
 
 ## 💬 Comments (`Comment.nvim`)
 

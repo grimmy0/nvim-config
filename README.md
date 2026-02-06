@@ -23,6 +23,7 @@ A personalized Neovim setup configured in Lua. This configuration is built aroun
 - **Python**: Easy virtual environment switching with [venv-selector.nvim](https://github.com/linux-cultist/venv-selector.nvim), plus templates via [esqueleto.nvim](https://github.com/cvigilv/esqueleto.nvim).
 - **Task Runner**: Manage and run tasks (compiler, linter, etc.) with [overseer.nvim](https://github.com/stevearc/overseer.nvim).
 - **Editing Helpers**: Auto-pairs with [nvim-autopairs](https://github.com/windwp/nvim-autopairs) and surround editing with [nvim-surround](https://github.com/kylechui/nvim-surround).
+- **Clipboard**: Default yank/paste uses the system clipboard (`clipboard=unnamedplus`).
 - **UI**: [Catppuccin Mocha](https://github.com/catppuccin/nvim) theme and [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) statusline.
 
 ## Installation
@@ -39,6 +40,9 @@ A personalized Neovim setup configured in Lua. This configuration is built aroun
 
 3. **Start Neovim:**
    The plugin manager (`lazy.nvim`) will automatically install itself and all plugins on the first start.
+
+4. **Clipboard provider (Linux/macOS):**
+   This config enables `unnamedplus`, so install a system clipboard tool for your platform (for example `wl-copy`/`wl-paste`, `xclip`, or `pbcopy`/`pbpaste`).
 
 ## Keybindings
 
