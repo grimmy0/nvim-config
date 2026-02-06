@@ -19,6 +19,7 @@ pcall(require, 'compat')
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.guicursor = 'n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20'
+vim.opt.clipboard:append('unnamedplus')
 
 -- Headless safety: avoid writes and heavy startup
 if #vim.api.nvim_list_uis() == 0 then
