@@ -133,6 +133,7 @@ Templates are offered when creating new files (e.g., `*.py`, `cli.py`).
 ## 📋 Clipboard
 
 This config enables `clipboard=unnamedplus`, so regular yanks/pastes use the system clipboard.
+Yanked text also flashes briefly as visual feedback after each yank.
 
 | Key | Description | Register |
 | :--- | :--- | :--- |

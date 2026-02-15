@@ -24,6 +24,7 @@ A personalized Neovim setup configured in Lua. This configuration is built aroun
 - **Task Runner**: Manage and run tasks (compiler, linter, etc.) with [overseer.nvim](https://github.com/stevearc/overseer.nvim).
 - **Editing Helpers**: Auto-pairs with [nvim-autopairs](https://github.com/windwp/nvim-autopairs) and surround editing with [nvim-surround](https://github.com/kylechui/nvim-surround).
 - **Clipboard**: Default yank/paste uses the system clipboard (`clipboard=unnamedplus`).
+- **Yank Feedback**: Yanked text briefly highlights to confirm copy actions.
 - **UI**: [Catppuccin Mocha](https://github.com/catppuccin/nvim) theme and [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) statusline.
 
 ## Installation
