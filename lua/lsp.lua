@@ -42,9 +42,26 @@ if ok_blink then
   capabilities = blink.get_lsp_capabilities(capabilities)
 end
 
+local function resolve_executable(name)
+  local mason_bin = vim.fn.stdpath('data') .. '/mason/bin/' .. name
+  if vim.fn.executable(mason_bin) == 1 then
+    return mason_bin
+  end
+
+  local system_path = vim.fn.exepath(name)
+  if system_path ~= '' then
+    return system_path
+  end
+
+  return name
+end
+
 -- Configure defaults, then enable by name (Nvim 0.11 API)
 -- Ruff
 vim.lsp.config('ruff', {
+  cmd = { resolve_executable('ruff'), 'server' },
+  filetypes = { 'python' },
+  root_markers = { 'pyproject.toml', 'ruff.toml', '.ruff.toml', '.git' },
   on_attach = function(client, bufnr)
     client.server_capabilities.hoverProvider = false
     on_attach(client, bufnr)
@@ -54,10 +71,30 @@ vim.lsp.config('ruff', {
 
 -- BasedPyright
 vim.lsp.config('basedpyright', {
+  cmd = { resolve_executable('basedpyright-langserver'), '--stdio' },
+  filetypes = { 'python' },
+  root_markers = {
+    'pyrightconfig.json',
+    'pyproject.toml',
+    'setup.py',
+    'setup.cfg',
+    'requirements.txt',
+    'Pipfile',
+    '.git',
+  },
   on_attach = on_attach,
   capabilities = capabilities,
+  settings = {
+    basedpyright = {
+      analysis = {
+        autoImportCompletions = true,
+      },
+    },
+  },
 })
 
 -- Enable filetype-based activation
 vim.lsp.enable('ruff')
 vim.lsp.enable('basedpyright')
+
+require('python_auto_import').setup()
