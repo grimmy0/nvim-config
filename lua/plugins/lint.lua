@@ -4,7 +4,7 @@ return {
   config = function()
     local lint = require("lint")
     lint.linters_by_ft = {
-      python = { "ruff", "mypy" },
+      python = { "mypy" },
     }
 
     local group = vim.api.nvim_create_augroup("LintOnSave", { clear = true })
