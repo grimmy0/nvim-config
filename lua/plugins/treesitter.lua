@@ -3,15 +3,26 @@ return {
   lazy = false,
   build = ':TSUpdate',
   config = function()
-    -- New setup for nvim-treesitter (without configs module)
-    require('nvim-treesitter').setup({
-      ensure_installed = { "c", "lua", "vim", "python", "javascript", "json", "yaml", "markdown", "markdown_inline" },
-      auto_install = true,
-      sync_install = false,
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-      },
+    -- main branch: setup() only takes install_dir; ensure_installed/highlight
+    -- options from the old master branch are ignored here.
+    require('nvim-treesitter').setup({})
+
+    -- No-op for already-installed parsers.
+    require('nvim-treesitter').install({
+      'c', 'lua', 'vim', 'python', 'javascript', 'json', 'yaml',
+      'markdown', 'markdown_inline',
     })
-  end
+
+    -- Highlighting is not enabled automatically on the main branch; start it
+    -- per buffer (markdown_inline is injection-only, not a filetype).
+    vim.api.nvim_create_autocmd('FileType', {
+      group = vim.api.nvim_create_augroup('TreesitterHighlight', { clear = true }),
+      pattern = {
+        'c', 'lua', 'vim', 'python', 'javascript', 'json', 'yaml', 'markdown',
+      },
+      callback = function()
+        pcall(vim.treesitter.start)
+      end,
+    })
+  end,
 }
