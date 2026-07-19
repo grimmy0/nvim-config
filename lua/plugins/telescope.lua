@@ -1,5 +1,5 @@
 return {
-  'nvim-telescope/telescope.nvim', version = '0.1.x',
+  'nvim-telescope/telescope.nvim',
   dependencies = { {'nvim-lua/plenary.nvim'} },
   config = function()
     vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
