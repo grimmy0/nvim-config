@@ -5,7 +5,7 @@ return {
     require('lualine').setup({
       options = {
         icons_enabled = true,
-        theme = 'catppuccin', -- Use the catppuccin theme
+        theme = 'catppuccin-nvim', -- catppuccin's adaptive lualine theme (renamed from 'catppuccin' in Jul 2026)
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = '' }
       },
