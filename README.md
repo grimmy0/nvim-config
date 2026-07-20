@@ -19,7 +19,7 @@ A personalized Neovim setup configured in Lua. This configuration is built aroun
 - **AI Assistance**: [codecompanion.nvim](https://github.com/olimorris/codecompanion.nvim) (Gemini CLI) and [copilot.lua](https://github.com/zbirenbaum/copilot.lua).
 - **LSP**: Configured via `mason.nvim`. Includes the "Modern Stack" for Python: `basedpyright` and `ruff`.
 - **Formatting**: Format-on-save with [conform.nvim](https://github.com/stevearc/conform.nvim) (Ruff for Python).
-- **Linting**: Lint-on-save with [nvim-lint](https://github.com/mfussenegger/nvim-lint) (Ruff + MyPy for Python).
+- **Linting**: Lint-on-save with [nvim-lint](https://github.com/mfussenegger/nvim-lint) (MyPy; Ruff diagnostics come from the Ruff LSP server).
 - **Python**: Easy virtual environment switching with [venv-selector.nvim](https://github.com/linux-cultist/venv-selector.nvim), plus templates via [esqueleto.nvim](https://github.com/cvigilv/esqueleto.nvim).
 - **Task Runner**: Manage and run tasks (compiler, linter, etc.) with [overseer.nvim](https://github.com/stevearc/overseer.nvim).
 - **Editing Helpers**: Auto-pairs with [nvim-autopairs](https://github.com/windwp/nvim-autopairs) and surround editing with [nvim-surround](https://github.com/kylechui/nvim-surround).
@@ -45,6 +45,9 @@ A personalized Neovim setup configured in Lua. This configuration is built aroun
 4. **Clipboard provider (Linux/macOS):**
    This config enables `unnamedplus`, so install a system clipboard tool for your platform (for example `wl-copy`/`wl-paste`, `xclip`, or `pbcopy`/`pbpaste`).
 
+5. **tree-sitter CLI (>= 0.26.1):**
+   Needed by `:TSUpdate` to build parsers. Distro packages are often older; a current binary in `~/.local/bin` (installed here: 0.26.11) takes precedence.
+
 ## Keybindings
 
 The `<leader>` key is set to `space`. For a full list of commands, see the [CHEATSHEET.md](./CHEATSHEET.md).
@@ -67,3 +70,38 @@ This configuration uses `lazy.nvim`.
 
 - `:Lazy` - Open the manager UI.
 - `:Lazy sync` - Sync and update plugins.
+
+## Maintenance
+
+### Deprecated-API shims (`lua/compat.lua`)
+
+Neovim is removing two long-deprecated APIs: `vim.tbl_islist` (removal target 0.12) and the table form of `vim.validate` (removal target 0.13). `lua/compat.lua` loads before plugins and shims both, keeping sessions quiet today and working the day the APIs disappear.
+
+As of July 2026 these installed plugins still call the old APIs and need the shim:
+
+- `vim.tbl_islist`: codecompanion.nvim, noice.nvim, lazy.nvim
+- table-form `vim.validate`: gitsigns.nvim, esqueleto.nvim, nvim-dap-ui, nvim-notify
+
+Retirement condition — after any `:Lazy sync`, run:
+
+```bash
+grep -rl 'tbl_islist' ~/.local/share/nvim/lazy/*/lua
+grep -rlE 'vim\.validate\(\{' ~/.local/share/nvim/lazy/*/lua
+```
+
+When both come back empty, delete `lua/compat.lua` and the `pcall(require, 'compat')` line in `init.lua`.
+
+### Pinned versions
+
+- **nvim-treesitter** is pinned in `lua/plugins/treesitter.lua` to commit `8755152` — the last `main`-branch revision that supports Neovim 0.11 (the branch requires 0.12+ since Apr 2026). Once Neovim 0.12+ is installed: remove the `commit = ...` line, run `:Lazy sync`, then `:TSUpdate`. That is also the right moment to re-run the compat greps above.
+
+### Known health-check quirks (safe to ignore)
+
+- `:checkhealth nvim-treesitter` reports `…/site/ is not in runtimepath` — an upstream trailing-slash comparison bug; parsers demonstrably load from that directory.
+- `:checkhealth noice` warns about optional `regex`/`bash` cmdline parsers — cosmetic.
+
+### Cleanup checklist
+
+- [ ] Neovim 0.12+ lands: unpin nvim-treesitter (see above)
+- [ ] After each plugin sync: re-run the compat greps; retire `lua/compat.lua` when both are empty
+- [ ] Optional: upstream a `vim.validate` migration PR to esqueleto.nvim (the smallest of the seven shim dependents)

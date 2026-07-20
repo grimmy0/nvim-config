@@ -45,8 +45,8 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 
 | Key | Description | Source |
 | :--- | :--- | :--- |
-| `[d` | Go to previous diagnostic | `vim.diagnostic.goto_prev` |
-| `]d` | Go to next diagnostic | `vim.diagnostic.goto_next` |
+| `[d` | Go to previous diagnostic | `vim.diagnostic.jump` |
+| `]d` | Go to next diagnostic | `vim.diagnostic.jump` |
 | `<leader>dd` | Open diagnostics location list | `lua/diagnostics.lua` |
 
 ## 📌 Marks (Core)
@@ -77,8 +77,8 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 | `<F10>` | Step Over | `dap.step_over` |
 | `<F11>` | Step Into | `dap.step_into` |
 | `<F12>` | Step Out | `dap.step_out` |
-| `<leader>b` | Toggle Breakpoint | `dap.toggle_breakpoint` |
-| `<leader>B` | Set Conditional Breakpoint | `dap.set_breakpoint` |
+| `<leader>db` | Toggle Breakpoint | `dap.toggle_breakpoint` |
+| `<leader>dB` | Set Conditional Breakpoint | `dap.set_breakpoint` |
 | `<leader>lp` | Log Point | `dap.set_breakpoint` |
 | `<leader>dr` | Toggle REPL | `dap.repl.toggle` |
 | `<leader>do` | Open Debug UI | `dapui.open` |

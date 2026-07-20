@@ -18,7 +18,7 @@ Key features and technologies used:
     - `copilot.lua` & `codecompanion.nvim`: AI coding assistants (GitHub Copilot & Gemini CLI).
     - `mason.nvim`: To manage LSP servers, formatters, and linters.
     - `conform.nvim`: Format-on-save (Ruff for Python).
-    - `nvim-lint`: Lint-on-save (Ruff + MyPy for Python).
+    - `nvim-lint`: Lint-on-save (MyPy for Python; Ruff diagnostics come from its LSP server).
     - `nvim-autopairs` and `nvim-surround`: Editing helpers.
     - `esqueleto.nvim`: File templates for new files.
 - **Clipboard**:
