@@ -7,11 +7,13 @@ return {
     'nvim-telescope/telescope-dap.nvim', -- For telescope integration
     'nvim-neotest/nvim-nio', -- Required by nvim-dap-ui
   },
+  ft = 'python',
   config = function()
     local dap = require('dap')
     local dapui = require('dapui')
 
     dapui.setup()
+    pcall(function() require('telescope').load_extension('dap') end)
 
     dap.listeners.after.event_initialized['dapui_config'] = function()
       dapui.open()

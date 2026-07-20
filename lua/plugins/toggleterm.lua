@@ -1,6 +1,8 @@
 return {
   'akinsho/toggleterm.nvim',
   version = "*",
+  cmd = 'ToggleTerm',
+  keys = { [[<C-\>]], { '<leader>t', '<cmd>ToggleTerm<cr>', desc = 'Toggle Floating Terminal' } },
   config = function()
     require("toggleterm").setup({
       direction = 'float',
@@ -9,9 +11,6 @@ return {
       },
       open_mapping = [[<c-\>]], -- Standard toggle key
     })
-
-    -- Custom keybinding for toggling
-    vim.keymap.set('n', '<leader>t', '<cmd>ToggleTerm<cr>', { desc = 'Toggle Floating Terminal' })
     
     local function set_terminal_keymaps(bufnr)
       local opts = { buffer = bufnr }

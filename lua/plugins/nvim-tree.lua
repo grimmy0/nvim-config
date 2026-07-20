@@ -3,6 +3,8 @@ return {
   dependencies = {
     'nvim-tree/nvim-web-devicons', -- optional, for file icons
   },
+  cmd = { 'NvimTreeToggle', 'NvimTreeOpen', 'NvimTreeFocus' },
+  keys = { { '<leader>e', '<cmd>NvimTreeToggle<cr>', desc = 'Toggle file tree' } },
   config = function()
     require('nvim-tree').setup({
       view = {
@@ -30,6 +32,5 @@ return {
         width = math.floor(vim.opt.columns:get() * 0.8),
       },
     })
-    vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
   end
 }
