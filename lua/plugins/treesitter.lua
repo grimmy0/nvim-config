@@ -1,6 +1,9 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
+  -- Pinned: nvim-treesitter main dropped Nvim 0.11 support in Apr 2026
+  -- (c82bf96f); unpin when Fedora ships Neovim 0.12+.
+  commit = '875515255192864c33981c3ed66ad94e561b904a',
   build = ':TSUpdate',
   config = function()
     -- main branch: setup() only takes install_dir; ensure_installed/highlight
