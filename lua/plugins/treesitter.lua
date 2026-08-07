@@ -12,16 +12,18 @@ return {
 
     -- No-op for already-installed parsers.
     require('nvim-treesitter').install({
-      'c', 'lua', 'vim', 'python', 'javascript', 'json', 'yaml',
-      'markdown', 'markdown_inline',
+      'c', 'cpp', 'lua', 'vim', 'python', 'javascript', 'json', 'yaml',
+      'markdown', 'markdown_inline', 'cmake', 'doxygen',
     })
 
     -- Highlighting is not enabled automatically on the main branch; start it
-    -- per buffer (markdown_inline is injection-only, not a filetype).
+    -- per buffer (markdown_inline and doxygen are injection-only, not
+    -- filetypes).
     vim.api.nvim_create_autocmd('FileType', {
       group = vim.api.nvim_create_augroup('TreesitterHighlight', { clear = true }),
       pattern = {
-        'c', 'lua', 'vim', 'python', 'javascript', 'json', 'yaml', 'markdown',
+        'c', 'cpp', 'lua', 'vim', 'python', 'javascript', 'json', 'yaml',
+        'markdown', 'cmake',
       },
       callback = function()
         pcall(vim.treesitter.start)
