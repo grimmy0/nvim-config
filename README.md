@@ -17,10 +17,11 @@ A personalized Neovim setup configured in Lua. This configuration is built aroun
 - **File Explorer**: [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) provided as a floating explorer.
 - **Syntax & Highlighting**: [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for robust parsing.
 - **AI Assistance**: [codecompanion.nvim](https://github.com/olimorris/codecompanion.nvim) (Gemini CLI) and [copilot.lua](https://github.com/zbirenbaum/copilot.lua).
-- **LSP**: Configured via `mason.nvim`. Includes the "Modern Stack" for Python: `basedpyright` and `ruff`.
-- **Formatting**: Format-on-save with [conform.nvim](https://github.com/stevearc/conform.nvim) (Ruff for Python).
+- **LSP**: Configured via `mason.nvim`. Includes the "Modern Stack" for Python (`basedpyright` and `ruff`) plus `clangd` for C/C++.
+- **Formatting**: Format-on-save with [conform.nvim](https://github.com/stevearc/conform.nvim) (Ruff for Python, clang-format for C/C++).
 - **Linting**: Lint-on-save with [nvim-lint](https://github.com/mfussenegger/nvim-lint) (MyPy; Ruff diagnostics come from the Ruff LSP server).
 - **Python**: Easy virtual environment switching with [venv-selector.nvim](https://github.com/linux-cultist/venv-selector.nvim), plus templates via [esqueleto.nvim](https://github.com/cvigilv/esqueleto.nvim).
+- **C/C++**: `clangd` LSP, `clang-format`, CMake integration via [cmake-tools.nvim](https://github.com/Civitasv/cmake-tools.nvim), and debugging with `codelldb`/`gdb`.
 - **Task Runner**: Manage and run tasks (compiler, linter, etc.) with [overseer.nvim](https://github.com/stevearc/overseer.nvim).
 - **Editing Helpers**: Auto-pairs with [nvim-autopairs](https://github.com/windwp/nvim-autopairs) and surround editing with [nvim-surround](https://github.com/kylechui/nvim-surround).
 - **Clipboard**: Default yank/paste uses the system clipboard (`clipboard=unnamedplus`).
@@ -48,6 +49,13 @@ A personalized Neovim setup configured in Lua. This configuration is built aroun
 5. **tree-sitter CLI (>= 0.26.1):**
    Needed by `:TSUpdate` to build parsers. Distro packages are often older; a current binary in `~/.local/bin` (installed here: 0.26.11) takes precedence.
 
+### C/C++
+
+- Mason installs `clangd`, `clang-format`, and `codelldb` automatically on the first start.
+- `gdb` is not available through Mason. Install it from your distro (`sudo dnf install gdb` on Fedora) if you want the gdb launch/attach configurations — they stay hidden while gdb is absent.
+- clangd needs a `compile_commands.json`. cmake-tools.nvim generates one (`-DCMAKE_EXPORT_COMPILE_COMMANDS=1`) and soft-links it to the project root. For non-CMake projects, generate it yourself (for example `bear -- make`) or add a `compile_flags.txt`.
+- Per-project clangd tuning goes in a `.clangd` file; per-project formatting style in `.clang-format`.
+
 ## Keybindings
 
 The `<leader>` key is set to `space`. For a full list of commands, see the [CHEATSHEET.md](./CHEATSHEET.md).
@@ -61,7 +69,9 @@ The `<leader>` key is set to `space`. For a full list of commands, see the [CHEA
 | `<leader>t`     | Toggle Terminal (`ToggleTerm`)       |
 | `<leader>vs`    | Select VirtualEnv (`VenvSelector`)   |
 | `<leader>or`    | Run Task (`Overseer`)                |
+| `<leader>mb`    | Build CMake target (`CMakeBuild`)    |
 | `gd`            | Go to definition (LSP)               |
+| `<leader>a`     | Switch source/header (C/C++)         |
 | `<F5>`          | Debug: Run/Continue (DAP)            |
 
 ## Plugin Management
@@ -94,6 +104,10 @@ When both come back empty, delete `lua/compat.lua` and the `pcall(require, 'comp
 ### Pinned versions
 
 - **nvim-treesitter** is pinned in `lua/plugins/treesitter.lua` to commit `8755152` — the last `main`-branch revision that supports Neovim 0.11 (the branch requires 0.12+ since Apr 2026). Once Neovim 0.12+ is installed: remove the `commit = ...` line, run `:Lazy sync`, then `:TSUpdate`. That is also the right moment to re-run the compat greps above.
+
+### clangd_extensions.nvim is intentionally absent
+
+Everything that plugin used to add is native now: inlay hints via `vim.lsp.inlay_hint` (0.10), type hierarchy via `vim.lsp.buf.typehierarchy` (0.11), and `:LspClangdSwitchSourceHeader` / `:LspClangdShowSymbolInfo` shipped by nvim-lspconfig. Installing it would only duplicate those, so it is left out.
 
 ### Known health-check quirks (safe to ignore)
 

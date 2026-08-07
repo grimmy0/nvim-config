@@ -2,7 +2,7 @@
 
 This document lists every plugin used by this configuration, what it does, and why it is included.
 
-Loading strategy: roughly half the plugins are lazy-loaded — codecompanion/nvim-tree/toggleterm on command or key, telescope on its keys, gitsigns on buffer read, Comment/which-key on VeryLazy, the whole DAP stack on the python filetype. About 20 of 39 plugins load at startup.
+Loading strategy: roughly half the plugins are lazy-loaded — codecompanion/nvim-tree/toggleterm on command or key, telescope on its keys, gitsigns on buffer read, Comment/which-key on VeryLazy, the whole DAP stack on the python/c/cpp filetypes, cmake-tools on the c/cpp/cmake filetypes or its `:CMake*` commands. About 20 of 40 plugins load at startup.
 
 | Plugin | What it does | Why we need it |
 | :--- | :--- | :--- |
@@ -15,10 +15,10 @@ Loading strategy: roughly half the plugins are lazy-loaded — codecompanion/nvi
 | `numToStr/Comment.nvim` | Comment toggling. | Fast line/block commenting with standard mappings. |
 | `windwp/nvim-autopairs` | Auto-pairs quotes/brackets. | Inserts matching pairs for faster typing. |
 | `kylechui/nvim-surround` | Surround editing. | Change/add/remove surrounding quotes/brackets quickly. |
-| `stevearc/conform.nvim` | Formatter runner. | Format-on-save for Python using Ruff (with LSP fallback). |
+| `stevearc/conform.nvim` | Formatter runner. | Format-on-save for Python using Ruff and for C/C++ using clang-format (with LSP fallback). |
 | `mfussenegger/nvim-lint` | Linter runner. | Lint-on-save for Python using MyPy (Ruff diagnostics come from its LSP server). |
 | `zbirenbaum/copilot.lua` | GitHub Copilot client. | Enables Copilot integration in Neovim. |
-| `mfussenegger/nvim-dap` | Debug Adapter Protocol core. | Base debugging support. |
+| `mfussenegger/nvim-dap` | Debug Adapter Protocol core. | Base debugging support for Python and C/C++ (codelldb and gdb). |
 | `rcarriga/nvim-dap-ui` | DAP UI panels. | Provides the debugging UI layout. |
 | `theHamsta/nvim-dap-virtual-text` | Inline DAP info. | Shows variable values in-line while debugging. |
 | `mfussenegger/nvim-dap-python` | Python DAP adapter helper. | Simplifies Python debugging setup. |
@@ -29,7 +29,7 @@ Loading strategy: roughly half the plugins are lazy-loaded — codecompanion/nvi
 | `lukas-reineke/indent-blankline.nvim` | Indent guides. | Visual structure for nested blocks. |
 | `mason-org/mason.nvim` | LSP/tool installer. | Manages language servers and tools. |
 | `WhoIsSethDaniel/mason-tool-installer.nvim` | Mason helper. | Ensures required tools are installed automatically. |
-| `neovim/nvim-lspconfig` | LSP configurations. | Wires Neovim to LSP servers like basedpyright/ruff. |
+| `neovim/nvim-lspconfig` | LSP configurations. | Wires Neovim to LSP servers like basedpyright/ruff/clangd, and supplies clangd's offset-encoding negotiation plus the switch-source-header and symbol-info commands. |
 | `nvim-lualine/lualine.nvim` | Statusline. | Provides the themed statusline. |
 | `nvim-tree/nvim-web-devicons` | File icons. | Icons for tree, lualine, and markdown rendering. |
 | `nvim-mini/mini.diff` | Lightweight diff support. | Currently disabled but kept for optional diff visuals. |
@@ -38,6 +38,7 @@ Loading strategy: roughly half the plugins are lazy-loaded — codecompanion/nvi
 | `rcarriga/nvim-notify` | Notification UI. | Enhanced notifications used by Noice. |
 | `nvim-tree/nvim-tree.lua` | File explorer. | Tree-based file browser with floating view. |
 | `stevearc/overseer.nvim` | Task runner. | Run and manage tasks inside Neovim. |
+| `Civitasv/cmake-tools.nvim` | CMake integration. | Configure/build/run/debug CMake targets, and keeps `compile_commands.json` linked at the project root so clangd works. |
 | `MeanderingProgrammer/render-markdown.nvim` | Markdown rendering. | Better markdown rendering (also for CodeCompanion). |
 | `nvim-telescope/telescope.nvim` | Fuzzy finder. | Find files, buffers, and grep quickly. |
 | `nvim-lua/plenary.nvim` | Lua utility library. | Shared dependency for Telescope, CodeCompanion, and others. |

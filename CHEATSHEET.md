@@ -40,6 +40,10 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 | `<leader>ca` | Code actions | `vim.lsp.buf.code_action` |
 | `gr` | Go to references | `vim.lsp.buf.references` |
 | `<leader>f` | Format buffer | `conform.nvim` (fallback to LSP) |
+| `<leader>a` | Alternate between source/header (C/C++) | `:LspClangdSwitchSourceHeader` |
+| `<leader>si` | Show symbol info (C/C++) | `:LspClangdShowSymbolInfo` |
+| `<leader>ih` | Toggle inlay hints (C/C++) | `vim.lsp.inlay_hint` |
+| `<leader>th` | Type hierarchy, subtypes (C/C++) | `vim.lsp.buf.typehierarchy` |
 
 ## 🚨 Diagnostics
 
@@ -86,6 +90,25 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 | `<leader>dt` | Terminate Debug Session | `dap.terminate` |
 | `<leader>ds` | Disconnect Session | `dap.disconnect` |
 | `<leader>de` | Evaluate Expression (in UI) | `dapui.eval` |
+
+## 🔨 C/C++ & CMake (`cmake-tools.nvim`)
+
+| Key | Description | Command |
+| :--- | :--- | :--- |
+| `<leader>mg` | Configure & generate build system | `:CMakeGenerate` |
+| `<leader>mb` | Build selected target | `:CMakeBuild` |
+| `<leader>mr` | Run selected launch target | `:CMakeRun` |
+| `<leader>md` | Debug selected launch target | `:CMakeDebug` |
+| `<leader>mt` | Run tests | `:CMakeRunTest` |
+| `<leader>mc` | Clean build artifacts | `:CMakeClean` |
+| `<leader>ms` | Select build type (Debug/Release/…) | `:CMakeSelectBuildType` |
+| `<leader>mT` | Select build target | `:CMakeSelectBuildTarget` |
+| `<leader>mL` | Select launch target | `:CMakeSelectLaunchTarget` |
+| `<leader>ma` | Set launch arguments | `:CMakeLaunchArgs` |
+| `<leader>mk` | Select kit (compiler) | `:CMakeSelectKit` |
+| `<leader>mo` | Open executor output | `:CMakeOpenExecutor` |
+
+`:CMakeQuickStart` scaffolds a new C/C++ project. In a C/C++ buffer, `<F5>` lists the available launch configurations. `codelldb` is installed by Mason; the `gdb` launch/attach entries only appear once `gdb` is installed from your distro.
 
 ## 🤖 AI Assistance
 
