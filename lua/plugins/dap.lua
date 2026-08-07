@@ -7,7 +7,7 @@ return {
     'nvim-telescope/telescope-dap.nvim', -- For telescope integration
     'nvim-neotest/nvim-nio', -- Required by nvim-dap-ui
   },
-  ft = 'python',
+  ft = { 'python', 'c', 'cpp' },
   config = function()
     local dap = require('dap')
     local dapui = require('dapui')
@@ -49,5 +49,72 @@ return {
       python_path = 'python'
     end
     require('dap-python').setup(python_path)
+
+    -- C / C++ ---------------------------------------------------------------
+    local tools = require('tools')
+
+    -- codelldb >= 1.11 speaks DAP over stdio. The `type = 'server'` +
+    -- `--port ${port}` form most guides still show is only needed for older
+    -- versions; Mason ships 1.12.x.
+    dap.adapters.codelldb = {
+      type = 'executable',
+      command = tools.resolve_executable('codelldb'),
+    }
+
+    -- gdb has had a native DAP interpreter since 14 and it is what nvim-dap's
+    -- own wiki lists first. On this machine it also reads the libstdc++
+    -- pretty-printers shipped with gcc, so g++ builds inspect far better.
+    dap.adapters.gdb = {
+      type = 'executable',
+      command = 'gdb',
+      args = { '--interpreter=dap', '--eval-command', 'set print pretty on' },
+    }
+
+    local function pick_program()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end
+
+    -- Only offer adapters that are actually installed, so <F5> never lists a
+    -- configuration that dies on a missing binary. gdb is not a Mason package;
+    -- install it from the distro to make its entries appear.
+    local cpp_configurations = {}
+
+    if tools.has_executable('codelldb') then
+      table.insert(cpp_configurations, {
+        name = 'Launch (codelldb)',
+        type = 'codelldb',
+        request = 'launch',
+        program = pick_program,
+        cwd = '${workspaceFolder}',
+        args = {},
+        stopOnEntry = false,
+      })
+    end
+
+    if vim.fn.executable('gdb') == 1 then
+      table.insert(cpp_configurations, {
+        name = 'Launch (gdb)',
+        type = 'gdb',
+        request = 'launch',
+        program = pick_program,
+        cwd = '${workspaceFolder}',
+        args = {},
+        stopAtBeginningOfMainSubprogram = false,
+      })
+      table.insert(cpp_configurations, {
+        name = 'Attach to process (gdb)',
+        type = 'gdb',
+        request = 'attach',
+        program = pick_program,
+        pid = function()
+          local name = vim.fn.input('Executable name (filter): ')
+          return require('dap.utils').pick_process({ filter = name })
+        end,
+        cwd = '${workspaceFolder}',
+      })
+    end
+
+    dap.configurations.cpp = cpp_configurations
+    dap.configurations.c = cpp_configurations
   end
 }
