@@ -37,7 +37,7 @@ Loading strategy: roughly half the plugins are lazy-loaded — codecompanion/nvi
 | `MunifTanjim/nui.nvim` | UI component library. | Dependency for Noice UI. |
 | `rcarriga/nvim-notify` | Notification UI. | Enhanced notifications used by Noice. |
 | `nvim-tree/nvim-tree.lua` | File explorer. | Tree-based file browser with floating view. |
-| `stevearc/overseer.nvim` | Task runner. | Run and manage tasks inside Neovim. |
+| `stevearc/overseer.nvim` | Task runner. | Run and manage tasks inside Neovim; also backs cmake-tools' build output and the single-file C/C++ compile-and-run tasks in `lua/overseer/template/user/`. |
 | `Civitasv/cmake-tools.nvim` | CMake integration. | Configure/build/run/debug CMake targets, and keeps `compile_commands.json` linked at the project root so clangd works. |
 | `MeanderingProgrammer/render-markdown.nvim` | Markdown rendering. | Better markdown rendering (also for CodeCompanion). |
 | `nvim-telescope/telescope.nvim` | Fuzzy finder. | Find files, buffers, and grep quickly. |
