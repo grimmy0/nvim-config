@@ -23,7 +23,9 @@ A personalized Neovim setup configured in Lua. This configuration is built aroun
 - **Python**: Easy virtual environment switching with [venv-selector.nvim](https://github.com/linux-cultist/venv-selector.nvim), plus templates via [esqueleto.nvim](https://github.com/cvigilv/esqueleto.nvim).
 - **C/C++**: `clangd` LSP, `clang-format`, CMake integration via [cmake-tools.nvim](https://github.com/Civitasv/cmake-tools.nvim), and debugging with `codelldb`/`gdb`.
 - **Task Runner**: Manage and run tasks (compiler, linter, etc.) with [overseer.nvim](https://github.com/stevearc/overseer.nvim).
-- **Editing Helpers**: Auto-pairs with [nvim-autopairs](https://github.com/windwp/nvim-autopairs) and surround editing with [nvim-surround](https://github.com/kylechui/nvim-surround).
+- **Editing Helpers**: Auto-pairs with [nvim-autopairs](https://github.com/windwp/nvim-autopairs), surround editing with [nvim-surround](https://github.com/kylechui/nvim-surround), and comment toggling with [Comment.nvim](https://github.com/numToStr/Comment.nvim).
+- **Git**: Hunk signs and inline git actions via [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim).
+- **Discoverability**: On-demand keybinding hints with [which-key.nvim](https://github.com/folke/which-key.nvim).
 - **Clipboard**: Default yank/paste uses the system clipboard (`clipboard=unnamedplus`).
 - **Yank Feedback**: Yanked text briefly highlights to confirm copy actions.
 - **UI**: [Catppuccin Mocha](https://github.com/catppuccin/nvim) theme and [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) statusline.
@@ -87,10 +89,10 @@ This configuration uses `lazy.nvim`.
 
 Neovim is removing two long-deprecated APIs: `vim.tbl_islist` (removal target 0.12) and the table form of `vim.validate` (removal target 0.13). `lua/compat.lua` loads before plugins and shims both, keeping sessions quiet today and working the day the APIs disappear.
 
-As of July 2026 these installed plugins still call the old APIs and need the shim:
+As of August 2026 these installed plugins still call the old APIs and need the shim:
 
-- `vim.tbl_islist`: codecompanion.nvim, noice.nvim, lazy.nvim
-- table-form `vim.validate`: gitsigns.nvim, esqueleto.nvim, nvim-dap-ui, nvim-notify
+- `vim.tbl_islist`: codecompanion.nvim, lazy.nvim, mason.nvim, noice.nvim, nui.nvim, nvim-dap, plenary.nvim
+- table-form `vim.validate`: esqueleto.nvim, gitsigns.nvim, nvim-dap-ui, nvim-notify, toggleterm.nvim
 
 Retirement condition — after any `:Lazy sync`, run:
 
@@ -118,4 +120,4 @@ Everything that plugin used to add is native now: inlay hints via `vim.lsp.inlay
 
 - [ ] Neovim 0.12+ lands: unpin nvim-treesitter (see above)
 - [ ] After each plugin sync: re-run the compat greps; retire `lua/compat.lua` when both are empty
-- [ ] Optional: upstream a `vim.validate` migration PR to esqueleto.nvim (the smallest of the seven shim dependents)
+- [ ] Optional: upstream a `vim.validate` migration PR to esqueleto.nvim (the smallest of the twelve shim dependents)
