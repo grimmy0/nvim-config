@@ -27,6 +27,10 @@ return {
     'CMakeQuickStart',
     'CMakeOpenExecutor',
     'CMakeOpenRunner',
+    'CMakeCloseExecutor',
+    'CMakeCloseRunner',
+    'CMakeStopExecutor',
+    'CMakeStopRunner',
   },
   keys = {
     { '<leader>mg', '<cmd>CMakeGenerate<cr>', desc = 'CMake Generate' },
@@ -41,6 +45,17 @@ return {
     { '<leader>ma', '<cmd>CMakeLaunchArgs<cr>', desc = 'CMake Launch Args' },
     { '<leader>mk', '<cmd>CMakeSelectKit<cr>', desc = 'CMake Select Kit' },
     { '<leader>mo', '<cmd>CMakeOpenExecutor<cr>', desc = 'CMake Open Executor Output' },
+    -- Build output (overseer) and program output (terminal) are separate
+    -- windows, so dismissing both takes two commands. pcall keeps an
+    -- already-closed window from stopping the other one from closing.
+    {
+      '<leader>mq',
+      function()
+        pcall(vim.cmd, 'CMakeCloseExecutor')
+        pcall(vim.cmd, 'CMakeCloseRunner')
+      end,
+      desc = 'CMake Close Output Panes',
+    },
   },
   opts = {
     cmake_command = 'cmake',

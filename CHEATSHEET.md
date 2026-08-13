@@ -107,6 +107,7 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 | `<leader>ma` | Set launch arguments | `:CMakeLaunchArgs` |
 | `<leader>mk` | Select kit (compiler) | `:CMakeSelectKit` |
 | `<leader>mo` | Open executor output | `:CMakeOpenExecutor` |
+| `<leader>mq` | Close both output panes | `:CMakeCloseExecutor` + `:CMakeCloseRunner` |
 
 `:CMakeQuickStart` scaffolds a new C/C++ project. In a C/C++ buffer, `<F5>` lists the available launch configurations. `codelldb` is installed by Mason; the `gdb` launch/attach entries only appear once `gdb` is installed from your distro.
 
