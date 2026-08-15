@@ -38,12 +38,18 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 | `<C-k>` | Signature help | `vim.lsp.buf.signature_help` |
 | `<leader>rn` | Rename symbol | `vim.lsp.buf.rename` |
 | `<leader>ca` | Code actions | `vim.lsp.buf.code_action` |
-| `gr` | Go to references | `vim.lsp.buf.references` |
+| `grr` | Go to references (Nvim built-in) | `vim.lsp.buf.references` |
+| `grn` | Rename symbol (Nvim built-in) | `vim.lsp.buf.rename` |
+| `gra` | Code actions (Nvim built-in) | `vim.lsp.buf.code_action` |
+| `gri` | Go to implementation (Nvim built-in) | `vim.lsp.buf.implementation` |
+| `grt` | Go to type definition (Nvim built-in) | `vim.lsp.buf.type_definition` |
 | `<leader>cf` | Format buffer | `conform.nvim` (fallback to LSP) |
 | `<leader>a` | Alternate between source/header (C/C++) | `:LspClangdSwitchSourceHeader` |
 | `<leader>si` | Show symbol info (C/C++) | `:LspClangdShowSymbolInfo` |
 | `<leader>ih` | Toggle inlay hints (C/C++) | `vim.lsp.inlay_hint` |
 | `<leader>ch` | Type hierarchy, subtypes (C/C++) | `vim.lsp.buf.typehierarchy` |
+
+`gr` is deliberately left unmapped. Binding it would make it a prefix of the five `gr*` built-ins above and stall each behind `timeoutlen`.
 
 ## 🚨 Diagnostics
 

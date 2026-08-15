@@ -25,7 +25,10 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  -- No bare `gr` mapping: Nvim 0.11 ships grr (references), grn (rename),
+  -- gra (code action), gri (implementation) and grt (type definition). Mapping
+  -- `gr` itself would make it a complete mapping and a prefix of all five,
+  -- stalling each behind timeoutlen. Use grr for references.
   -- <leader>cf, not <leader>f: a bare <leader>f would also be a prefix of
   -- telescope's <leader>ff/fg/fb, forcing Vim to wait out timeoutlen before
   -- deciding which mapping was meant.
