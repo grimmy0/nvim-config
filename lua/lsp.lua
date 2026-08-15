@@ -26,7 +26,10 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<leader>f', function()
+  -- <leader>cf, not <leader>f: a bare <leader>f would also be a prefix of
+  -- telescope's <leader>ff/fg/fb, forcing Vim to wait out timeoutlen before
+  -- deciding which mapping was meant.
+  vim.keymap.set('n', '<leader>cf', function()
     local ok_conform, conform = pcall(require, 'conform')
     if ok_conform then
       conform.format({ async = true, lsp_format = 'fallback' })
@@ -137,7 +140,9 @@ vim.lsp.config('clangd', {
       '<cmd>LspClangdShowSymbolInfo<cr>',
       opts('clangd: Symbol Info')
     )
-    vim.keymap.set('n', '<leader>th', function()
+    -- <leader>ch rather than <leader>th, which <leader>t (toggleterm) would
+    -- shadow behind the same timeoutlen delay.
+    vim.keymap.set('n', '<leader>ch', function()
       vim.lsp.buf.typehierarchy('subtypes')
     end, opts('LSP: Type Hierarchy (subtypes)'))
   end,

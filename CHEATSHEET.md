@@ -39,11 +39,11 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 | `<leader>rn` | Rename symbol | `vim.lsp.buf.rename` |
 | `<leader>ca` | Code actions | `vim.lsp.buf.code_action` |
 | `gr` | Go to references | `vim.lsp.buf.references` |
-| `<leader>f` | Format buffer | `conform.nvim` (fallback to LSP) |
+| `<leader>cf` | Format buffer | `conform.nvim` (fallback to LSP) |
 | `<leader>a` | Alternate between source/header (C/C++) | `:LspClangdSwitchSourceHeader` |
 | `<leader>si` | Show symbol info (C/C++) | `:LspClangdShowSymbolInfo` |
 | `<leader>ih` | Toggle inlay hints (C/C++) | `vim.lsp.inlay_hint` |
-| `<leader>th` | Type hierarchy, subtypes (C/C++) | `vim.lsp.buf.typehierarchy` |
+| `<leader>ch` | Type hierarchy, subtypes (C/C++) | `vim.lsp.buf.typehierarchy` |
 
 ## 🚨 Diagnostics
 
