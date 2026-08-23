@@ -24,6 +24,7 @@ A personalized Neovim setup configured in Lua. This configuration is built aroun
 - **C/C++**: `clangd` LSP, `clang-format`, CMake integration via [cmake-tools.nvim](https://github.com/Civitasv/cmake-tools.nvim), and debugging with `codelldb`/`gdb`.
 - **Task Runner**: Manage and run tasks (compiler, linter, etc.) with [overseer.nvim](https://github.com/stevearc/overseer.nvim).
 - **Editing Helpers**: Auto-pairs with [nvim-autopairs](https://github.com/windwp/nvim-autopairs), surround editing with [nvim-surround](https://github.com/kylechui/nvim-surround), and comment toggling with [Comment.nvim](https://github.com/numToStr/Comment.nvim).
+- **Refactoring**: Extract/inline function and variable via [refactoring.nvim](https://github.com/ThePrimeagen/refactoring.nvim) (treesitter-based, works across C/C++, Python and Lua).
 - **Git**: Hunk signs and inline git actions via [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim).
 - **Discoverability**: On-demand keybinding hints with [which-key.nvim](https://github.com/folke/which-key.nvim).
 - **Clipboard**: Default yank/paste uses the system clipboard (`clipboard=unnamedplus`).
@@ -87,9 +88,13 @@ This configuration uses `lazy.nvim`.
 
 ## Maintenance
 
+### Neovim install location
+
+Neovim 0.12.4 is installed as a user-local tarball at `~/.local/opt/nvim-0.12.4/`, exposed through the symlink `~/.local/bin/nvim`. Fedora 43 packages only 0.11.x, and the dnf-managed `/usr/bin/nvim` is left untouched — `~/.local/bin` simply precedes `/usr/bin` on `PATH`. To roll back, delete the symlink and the older `nvim` takes over again. To upgrade, unpack the new tarball beside the old one and repoint the symlink.
+
 ### Deprecated-API shims (`lua/compat.lua`)
 
-Neovim is removing two long-deprecated APIs: `vim.tbl_islist` (removal target 0.12) and the table form of `vim.validate` (removal target 0.13). `lua/compat.lua` loads before plugins and shims both, keeping sessions quiet today and working the day the APIs disappear.
+Neovim is removing two long-deprecated APIs: `vim.tbl_islist` (removal target 0.12) and the table form of `vim.validate` (removal target 0.13). `lua/compat.lua` loads before plugins and shims both, keeping sessions quiet today and working the day the APIs disappear. Verified on Neovim 0.12.4: `vim.tbl_islist`, `vim.tbl_flatten`, `vim.validate`, `vim.loop` and `vim.highlight.on_yank` all still exist, and the config starts with no deprecation warnings, so the shims remain in place for now.
 
 As of August 2026 these installed plugins still call the old APIs and need the shim:
 
@@ -107,7 +112,7 @@ When both come back empty, delete `lua/compat.lua` and the `pcall(require, 'comp
 
 ### Pinned versions
 
-- **nvim-treesitter** is pinned in `lua/plugins/treesitter.lua` to commit `8755152` — the last `main`-branch revision that supports Neovim 0.11 (the branch requires 0.12+ since Apr 2026). Once Neovim 0.12+ is installed: remove the `commit = ...` line, run `:Lazy sync`, then `:TSUpdate`. That is also the right moment to re-run the compat greps above.
+- **nvim-treesitter** is no longer pinned. The pin existed only because the `main` branch dropped Neovim 0.11 support in Apr 2026; Neovim 0.12.4 is now installed, so the plugin tracks `main` again.
 
 ### clangd_extensions.nvim is intentionally absent
 
@@ -120,6 +125,6 @@ Everything that plugin used to add is native now: inlay hints via `vim.lsp.inlay
 
 ### Cleanup checklist
 
-- [ ] Neovim 0.12+ lands: unpin nvim-treesitter (see above)
+- [x] Neovim 0.12+ lands: unpin nvim-treesitter — done, running 0.12.4
 - [ ] After each plugin sync: re-run the compat greps; retire `lua/compat.lua` when both are empty
 - [ ] Optional: upstream a `vim.validate` migration PR to esqueleto.nvim (the smallest of the twelve shim dependents)

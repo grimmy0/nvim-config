@@ -137,6 +137,21 @@ Pick **C/C++: build & run … (args…)** instead when you need to change the la
 
 clangd's clang-tidy families are set in `~/.config/clangd/config.yaml` (`bugprone-*`, `modernize-*`, `performance-*`, `readability-*`, minus a few noisy checks), so most diagnostics arrive with a fix attached — `<leader>cF` clears them all at once.
 
+## 🔧 Refactoring (`refactoring.nvim`)
+
+Available in normal and visual mode. In normal mode these are operator-pending: follow the key with a motion or textobject (`_` is the current line), e.g. `<leader>rv_` extracts the whole line.
+
+| Key | Description |
+| :--- | :--- |
+| `<leader>re` | Extract function |
+| `<leader>rE` | Extract function to another file |
+| `<leader>rv` | Extract variable |
+| `<leader>ri` | Inline variable |
+| `<leader>rI` | Inline function |
+| `<leader>rs` | Pick a refactoring from a list |
+
+In C++, extracted variables are declared `auto` — the plugin is treesitter-based and has no semantic type information, and its default placeholder does not compile.
+
 ## 🤖 AI Assistance
 
 | Key | Description | Plugin |
