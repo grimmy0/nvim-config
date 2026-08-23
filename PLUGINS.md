@@ -2,7 +2,7 @@
 
 This document lists every plugin used by this configuration, what it does, and why it is included.
 
-Loading strategy: roughly half the plugins are lazy-loaded — codecompanion/nvim-tree/toggleterm on command or key, telescope on its keys, gitsigns on buffer read, Comment/which-key on VeryLazy, the whole DAP stack on the python/c/cpp filetypes, cmake-tools on the c/cpp/cmake filetypes or its `:CMake*` commands, telescope-ui-select on the first `vim.ui.select` call. About 20 of 41 plugins load at startup.
+Loading strategy: roughly half the plugins are lazy-loaded — codecompanion/nvim-tree/toggleterm on command or key, telescope on its keys, gitsigns on buffer read, Comment/which-key on VeryLazy, the whole DAP stack on the python/c/cpp filetypes, cmake-tools on the c/cpp/cmake filetypes or its `:CMake*` commands, nvim-treesitter-cpp-tools on the c/cpp filetypes or its `:TSCpp*` commands, telescope-ui-select on the first `vim.ui.select` call. About 20 of 42 plugins load at startup.
 
 | Plugin | What it does | Why we need it |
 | :--- | :--- | :--- |
@@ -45,5 +45,6 @@ Loading strategy: roughly half the plugins are lazy-loaded — codecompanion/nvi
 | `nvim-lua/plenary.nvim` | Lua utility library. | Shared dependency for Telescope, CodeCompanion, and others. |
 | `akinsho/toggleterm.nvim` | Terminal manager. | Floating terminal toggle inside Neovim. |
 | `nvim-treesitter/nvim-treesitter` | Syntax parser. | Fast syntax highlighting and parsing. Pinned for Neovim 0.11 (see README, Maintenance). |
+| `Badhi/nvim-treesitter-cpp-tools` | C++ code generation. | Implements out-of-class member functions, concrete classes from abstract ones, and Rule of 3/5 members — codegen clangd does not provide. |
 | `linux-cultist/venv-selector.nvim` | Python venv selector. | Switch Python environments from Neovim. |
 | `folke/which-key.nvim` | Keymap helper. | Displays available keybindings on demand. |

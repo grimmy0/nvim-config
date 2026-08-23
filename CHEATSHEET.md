@@ -124,6 +124,19 @@ For a standalone `.cpp`/`.c` file with no `CMakeLists.txt`, use `<leader>or` (`:
 
 Pick **C/C++: build & run … (args…)** instead when you need to change the language standard, compiler flags, or pass arguments to the program; **C/C++: build …** compiles without running. The output float closes as soon as you leave it, so `<C-w>w` or `:close` dismisses it.
 
+### C++ code generation (`nvim-treesitter-cpp-tools`)
+
+| Key | Description | Command |
+| :--- | :--- | :--- |
+| `<leader>ci` | Implement out-of-class member functions | `:TSCppDefineClassFunc` |
+| `<leader>cn` | Concrete class from an abstract one | `:TSCppMakeConcreteClass` |
+| `<leader>c3` | Add missing members for the Rule of 3 | `:TSCppRuleOf3` |
+| `<leader>c5` | Add missing members for the Rule of 5 | `:TSCppRuleOf5` |
+
+`<leader>ci` also works on a visual selection to implement only the chosen declarations. In the preview window, `q` quits and `<tab>` accepts.
+
+clangd's clang-tidy families are set in `~/.config/clangd/config.yaml` (`bugprone-*`, `modernize-*`, `performance-*`, `readability-*`, minus a few noisy checks), so most diagnostics arrive with a fix attached — `<leader>cF` clears them all at once.
+
 ## 🤖 AI Assistance
 
 | Key | Description | Plugin |
