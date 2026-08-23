@@ -2,7 +2,7 @@
 
 This document lists every plugin used by this configuration, what it does, and why it is included.
 
-Loading strategy: roughly half the plugins are lazy-loaded — codecompanion/nvim-tree/toggleterm on command or key, telescope on its keys, gitsigns on buffer read, Comment/which-key on VeryLazy, the whole DAP stack on the python/c/cpp filetypes, cmake-tools on the c/cpp/cmake filetypes or its `:CMake*` commands. About 20 of 40 plugins load at startup.
+Loading strategy: roughly half the plugins are lazy-loaded — codecompanion/nvim-tree/toggleterm on command or key, telescope on its keys, gitsigns on buffer read, Comment/which-key on VeryLazy, the whole DAP stack on the python/c/cpp filetypes, cmake-tools on the c/cpp/cmake filetypes or its `:CMake*` commands, telescope-ui-select on the first `vim.ui.select` call. About 20 of 41 plugins load at startup.
 
 | Plugin | What it does | Why we need it |
 | :--- | :--- | :--- |
@@ -41,6 +41,7 @@ Loading strategy: roughly half the plugins are lazy-loaded — codecompanion/nvi
 | `Civitasv/cmake-tools.nvim` | CMake integration. | Configure/build/run/debug CMake targets, and keeps `compile_commands.json` linked at the project root so clangd works. |
 | `MeanderingProgrammer/render-markdown.nvim` | Markdown rendering. | Better markdown rendering (also for CodeCompanion). |
 | `nvim-telescope/telescope.nvim` | Fuzzy finder. | Find files, buffers, and grep quickly. |
+| `nvim-telescope/telescope-ui-select.nvim` | `vim.ui.select` UI. | Renders selection prompts (like overseer's task picker) in telescope instead of the cmdline, where noice's command palette garbled them. |
 | `nvim-lua/plenary.nvim` | Lua utility library. | Shared dependency for Telescope, CodeCompanion, and others. |
 | `akinsho/toggleterm.nvim` | Terminal manager. | Floating terminal toggle inside Neovim. |
 | `nvim-treesitter/nvim-treesitter` | Syntax parser. | Fast syntax highlighting and parsing. Pinned for Neovim 0.11 (see README, Maintenance). |

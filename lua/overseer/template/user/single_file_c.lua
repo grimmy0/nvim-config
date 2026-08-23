@@ -78,6 +78,32 @@ local function params_for(ft)
   }
 end
 
+-- overseer's `default` alias is only on_exit_set_status / on_complete_notify /
+-- on_complete_dispose -- nothing that shows output. open_output must be
+-- attached explicitly, and with on_start = 'always': its own default of
+-- 'if_no_on_output_quickfix' would skip opening precisely because these tasks
+-- also attach on_output_quickfix.
+--
+-- focus = true is required for direction = 'float', not a preference:
+-- open_fullscreen_float enters the window and registers a WinLeave autocmd that
+-- closes it, while open_output with focus = false restores the previous window
+-- immediately afterwards -- so the float would open and instantly close.
+local function run_components()
+  return {
+    { 'on_output_quickfix', errorformat = ERRORFORMAT, items_only = true, open_on_match = true },
+    { 'open_output', on_start = 'always', direction = 'float', focus = true },
+    'default',
+  }
+end
+
+-- Compile-only stays quiet: errors land in the quickfix, success shows nothing.
+local function build_components()
+  return {
+    { 'on_output_quickfix', errorformat = ERRORFORMAT, items_only = true, open_on_match = true },
+    'default',
+  }
+end
+
 ---@type overseer.TemplateFileProvider
 return {
   condition = { filetype = { 'c', 'cpp' } },
@@ -94,37 +120,43 @@ return {
     local cwd = vim.fs.dirname(src)
     local label = vim.fn.fnamemodify(src, ':t')
 
+    local function run_task(params)
+      local compile = compile_argv(ft, src, params.std, params.flags or {})
+      local run = { binary_for(src) }
+      vim.list_extend(run, params.args or {})
+      return {
+        -- String cmd goes through the shell, which is what lets the run step
+        -- be gated on a successful compile.
+        cmd = shell(compile) .. ' && ' .. shell(run),
+        cwd = cwd,
+        components = run_components(),
+      }
+    end
+
+    local defaults = { std = TOOLCHAIN[ft].std, flags = DEFAULT_FLAGS, args = {} }
+
     return {
       {
+        -- No params: picking this runs straight away with the defaults.
         name = 'C/C++: build & run ' .. label,
+        builder = function()
+          return run_task(defaults)
+        end,
+      },
+      {
+        name = 'C/C++: build & run ' .. label .. ' (args...)',
         params = params_for(ft),
         builder = function(params)
-          local compile = compile_argv(ft, src, params.std, params.flags or {})
-          local run = { binary_for(src) }
-          vim.list_extend(run, params.args or {})
-          return {
-            -- String cmd goes through the shell, which is what lets the run
-            -- step be gated on a successful compile.
-            cmd = shell(compile) .. ' && ' .. shell(run),
-            cwd = cwd,
-            components = {
-              { 'on_output_quickfix', errorformat = ERRORFORMAT, items_only = true, open_on_match = true },
-              'default',
-            },
-          }
+          return run_task(params)
         end,
       },
       {
         name = 'C/C++: build ' .. label,
-        params = params_for(ft),
-        builder = function(params)
+        builder = function()
           return {
-            cmd = compile_argv(ft, src, params.std, params.flags or {}),
+            cmd = compile_argv(ft, src, defaults.std, defaults.flags),
             cwd = cwd,
-            components = {
-              { 'on_output_quickfix', errorformat = ERRORFORMAT, items_only = true, open_on_match = true },
-              'default',
-            },
+            components = build_components(),
           }
         end,
       },

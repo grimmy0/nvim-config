@@ -117,7 +117,9 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 
 `:CMakeQuickStart` scaffolds a new C/C++ project. In a C/C++ buffer, `<F5>` lists the available launch configurations. `codelldb` is installed by Mason; the `gdb` launch/attach entries only appear once `gdb` is installed from your distro.
 
-For a standalone `.cpp`/`.c` file with no `CMakeLists.txt`, use `<leader>or` (`:OverseerRun`) and pick **C/C++: build & run** — it compiles the current file and runs it, sending any compiler errors to the quickfix list. The binary goes to `~/.cache/nvim/overseer-single-file/`, and the standard, flags and program arguments can be edited in the task form before it runs.
+For a standalone `.cpp`/`.c` file with no `CMakeLists.txt`, use `<leader>or` (`:OverseerRun`) and pick **C/C++: build & run** — it compiles the current file and runs it straight away, opening the program output in a floating window. Compiler errors go to the quickfix list instead. The binary is written to `~/.cache/nvim/overseer-single-file/`.
+
+Pick **C/C++: build & run … (args…)** instead when you need to change the language standard, compiler flags, or pass arguments to the program; **C/C++: build …** compiles without running. The output float closes as soon as you leave it, so `<C-w>w` or `:close` dismisses it.
 
 ## 🤖 AI Assistance
 
