@@ -44,12 +44,15 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 | `gri` | Go to implementation (Nvim built-in) | `vim.lsp.buf.implementation` |
 | `grt` | Go to type definition (Nvim built-in) | `vim.lsp.buf.type_definition` |
 | `<leader>cf` | Format buffer | `conform.nvim` (fallback to LSP) |
+| `<leader>cF` | Apply all quickfixes in the buffer | `vim.lsp.buf.code_action` (looped) |
 | `<leader>a` | Alternate between source/header (C/C++) | `:LspClangdSwitchSourceHeader` |
 | `<leader>si` | Show symbol info (C/C++) | `:LspClangdShowSymbolInfo` |
 | `<leader>ih` | Toggle inlay hints (C/C++) | `vim.lsp.inlay_hint` |
 | `<leader>ch` | Type hierarchy, subtypes (C/C++) | `vim.lsp.buf.typehierarchy` |
 
 `gr` is deliberately left unmapped. Binding it would make it a prefix of the five `gr*` built-ins above and stall each behind `timeoutlen`.
+
+Diagnostics ending in `(fix available)` are code actions: put the cursor on that line and press `<leader>ca`, or `<leader>cF` to apply every fix in the buffer at once. The cursor must be on the diagnostic's line — clangd only returns a quickfix when the request carries the diagnostic it fixes, so `]d` then `<leader>ca` is the reliable rhythm. clang-tidy's brace fixes are not reindented, so follow up with `<leader>cf`.
 
 ## 🚨 Diagnostics
 

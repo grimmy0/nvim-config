@@ -40,6 +40,61 @@ local on_attach = function(_, bufnr)
       vim.lsp.buf.format({ async = true })
     end
   end, bufopts)
+
+  -- Apply every available quickfix in the buffer.
+  --
+  -- Done one at a time, re-reading diagnostics between rounds, because each
+  -- applied edit shifts the positions of the ones after it. A server only
+  -- offers a quickfix when the request carries the diagnostic it fixes, so each
+  -- round sends exactly one diagnostic in the context. `attempted` guards
+  -- against a fix that does not clear its own diagnostic, which would otherwise
+  -- loop forever.
+  vim.keymap.set('n', '<leader>cF', function()
+    local client = vim.lsp.get_clients({ bufnr = bufnr })[1]
+    if not client then
+      return vim.notify('No LSP client attached', vim.log.levels.WARN)
+    end
+    local encoding = client.offset_encoding or 'utf-16'
+    local applied, attempted = 0, {}
+
+    local function step()
+      local target
+      for _, d in ipairs(vim.diagnostic.get(bufnr)) do
+        local lsp_diagnostic = d.user_data and d.user_data.lsp
+        local key = ('%d:%d:%s'):format(d.lnum, d.col, d.message)
+        if lsp_diagnostic and not attempted[key] then
+          attempted[key] = true
+          target = lsp_diagnostic
+          break
+        end
+      end
+
+      if not target then
+        return vim.notify(
+          ('Applied %d fix%s'):format(applied, applied == 1 and '' or 'es'),
+          vim.log.levels.INFO
+        )
+      end
+
+      local params = {
+        textDocument = vim.lsp.util.make_text_document_params(bufnr),
+        range = target.range,
+        context = { diagnostics = { target }, only = { 'quickfix' } },
+      }
+      client:request('textDocument/codeAction', params, function(_, result)
+        for _, action in ipairs(result or {}) do
+          if action.edit then
+            vim.lsp.util.apply_workspace_edit(action.edit, encoding)
+            applied = applied + 1
+            break
+          end
+        end
+        vim.schedule(step)
+      end, bufnr)
+    end
+
+    step()
+  end, bufopts)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

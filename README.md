@@ -57,6 +57,8 @@ A personalized Neovim setup configured in Lua. This configuration is built aroun
 - `gdb` is not available through Mason. Install it from your distro (`sudo dnf install gdb` on Fedora) if you want the gdb launch/attach configurations — they stay hidden while gdb is absent.
 - clangd needs a `compile_commands.json`. cmake-tools.nvim generates one (`-DCMAKE_EXPORT_COMPILE_COMMANDS=1`) and soft-links it to the project root. For non-CMake projects, generate it yourself (for example `bear -- make`) or add a `compile_flags.txt`.
 - Per-project clangd tuning goes in a `.clangd` file; per-project formatting style in `.clang-format`.
+- Missing-include fixes come from `~/.config/clangd/config.yaml` (`Diagnostics.MissingIncludes: Strict`), which lives outside this repo because clangd has no command-line flag for it. Without that setting clangd only adds headers when you accept a completion, so a pasted or fully typed symbol yields no fix.
+- clangd has no "create function from usage" action; it only generates a definition from an existing declaration (`Add definition`, `Define outline`). Use Copilot or CodeCompanion for generate-from-usage.
 
 ## Keybindings
 
