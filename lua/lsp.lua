@@ -95,6 +95,15 @@ local on_attach = function(_, bufnr)
 
     step()
   end, bufopts)
+
+  -- Fix only what is under the cursor: a lone quickfix applies straight away,
+  -- and several still open the picker, limited to quickfixes.
+  vim.keymap.set('n', '<leader>cq', function()
+    vim.lsp.buf.code_action({
+      context = { only = { 'quickfix' } },
+      apply = true,
+    })
+  end, bufopts)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
