@@ -17,7 +17,7 @@ A personalized Neovim setup configured in Lua. This configuration is built aroun
 - **File Explorer**: [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) provided as a floating explorer.
 - **Syntax & Highlighting**: [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) for robust parsing.
 - **AI Assistance**: [codecompanion.nvim](https://github.com/olimorris/codecompanion.nvim) (Gemini CLI) and [copilot.lua](https://github.com/zbirenbaum/copilot.lua).
-- **LSP**: Configured via `mason.nvim`. Includes the "Modern Stack" for Python (`basedpyright` and `ruff`) plus `clangd` for C/C++.
+- **LSP**: Configured via `mason.nvim`. Includes the "Modern Stack" for Python (`basedpyright` and `ruff`, plus `pylsp` running only the `pylsp-rope` plugin for extract/inline refactorings) and `clangd` for C/C++.
 - **Formatting**: Format-on-save with [conform.nvim](https://github.com/stevearc/conform.nvim) (Ruff for Python, clang-format for C/C++).
 - **Linting**: Lint-on-save with [nvim-lint](https://github.com/mfussenegger/nvim-lint) (MyPy; Ruff diagnostics come from the Ruff LSP server).
 - **Python**: Easy virtual environment switching with [venv-selector.nvim](https://github.com/linux-cultist/venv-selector.nvim), plus templates via [esqueleto.nvim](https://github.com/cvigilv/esqueleto.nvim).

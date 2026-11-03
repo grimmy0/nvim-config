@@ -155,6 +155,8 @@ In C++, extracted variables are declared `auto` — the plugin is treesitter-bas
 
 **Extracting a function in C++: prefer clangd.** Select lines with `V`, press `gra`, pick **Extract to function**, then rename the result (clangd always calls it `extracted`) with `grn`. clangd handles free functions and methods, and adds the member declaration to the class. It offers nothing when the selection declares a variable used after it; for free functions `<leader>re` handles that case, but do not use `<leader>re` on class methods — it generates C++ that does not compile.
 
+**Extracting in Python: pylsp-rope.** Select lines with `V` and press `gra`: pylsp-rope offers **Extract method** (plus "global" and "including similar statements" variants), extract variable, inline, introduce parameter and generate variable/function/class. The new method is called `extracted_method`, so rename it with `grn`. Rope keeps a `.ropeproject` folder in the project root; add it to your global gitignore.
+
 ## 🎯 Text Objects & Motions (`nvim-treesitter-textobjects`)
 
 Text objects work in visual mode and after any operator (`d`, `c`, `y`, …), e.g. `daf` cuts the function under the cursor and `vic` selects a class body. They also work from elsewhere on the line, jumping ahead to the next match.
