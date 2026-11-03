@@ -121,7 +121,9 @@ Everything that plugin used to add is native now: inlay hints via `vim.lsp.inlay
 
 ### Known health-check quirks (safe to ignore)
 
-- `:checkhealth noice` warns about optional `regex`/`bash` cmdline parsers — cosmetic.
+- `:checkhealth blink.cmp` always warns "Some providers may show up as disabled" — the check emits it unconditionally.
+- `:checkhealth copilot` warns "Suggestions disabled in configuration" — blink-cmp-copilot requires copilot.lua's suggestion module off, since Copilot items come through blink.cmp instead.
+- `:checkhealth which-key` reports `gc`/`gcc`, `gb`/`gbc`, `ys`/`yss` and `yS`/`ySS` as overlapping — every operator with a linewise variant looks like that (Neovim's built-in `gc` would too); timeoutlen only applies when you pause after the operator.
 
 ### Cleanup checklist
 
