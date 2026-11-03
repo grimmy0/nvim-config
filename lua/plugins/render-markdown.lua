@@ -14,6 +14,9 @@ return {
       sign = {
         enabled = false,
       },
+      -- LaTeX needs a generated latex parser plus utftex or latex2text;
+      -- nothing here writes math, so leave it off rather than install both.
+      latex = { enabled = false },
     })
   end,
 }

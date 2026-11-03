@@ -11,6 +11,9 @@ return {
     require('nvim-treesitter').install({
       'c', 'cpp', 'lua', 'vim', 'python', 'javascript', 'json', 'yaml',
       'markdown', 'markdown_inline', 'cmake', 'doxygen',
+      -- Injection-only: noice highlights `:s/` patterns and `:!` commands
+      -- with regex/bash, render-markdown renders inline HTML with html.
+      'regex', 'bash', 'html',
     })
 
     -- Highlighting is not enabled automatically on the main branch; start it
