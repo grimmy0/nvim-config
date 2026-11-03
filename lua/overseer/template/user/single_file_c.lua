@@ -106,7 +106,9 @@ end
 
 ---@type overseer.TemplateFileProvider
 return {
-  condition = { filetype = { 'c', 'cpp' } },
+  -- No `condition`: the generator already returns nothing outside C/C++
+  -- buffers, and a filetype condition makes :checkhealth overseer warn
+  -- whenever it runs from any other buffer.
   generator = function(search)
     local ft = search.filetype
     if not TOOLCHAIN[ft] then
