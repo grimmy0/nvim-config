@@ -51,7 +51,7 @@ A personalized Neovim setup configured in Lua. This configuration is built aroun
    This config enables `unnamedplus`, so install a system clipboard tool for your platform (for example `wl-copy`/`wl-paste`, `xclip`, or `pbcopy`/`pbpaste`).
 
 5. **tree-sitter CLI (>= 0.26.1):**
-   Needed by `:TSUpdate` to build parsers. Distro packages are often older; a current binary in `~/.local/bin` (installed here: 0.26.11) takes precedence.
+   Needed by `:TSUpdate` to build parsers. Distro packages are often older; a current binary in `~/.local/bin` (installed here: 0.27.1; the previous 0.26.11 binary is kept in `~/.local/opt/tree-sitter-0.26.11/`) takes precedence.
 
 ### C/C++
 
@@ -121,7 +121,6 @@ Everything that plugin used to add is native now: inlay hints via `vim.lsp.inlay
 
 ### Known health-check quirks (safe to ignore)
 
-- `:checkhealth nvim-treesitter` reports `…/site/ is not in runtimepath` — an upstream trailing-slash comparison bug; parsers demonstrably load from that directory.
 - `:checkhealth noice` warns about optional `regex`/`bash` cmdline parsers — cosmetic.
 
 ### Cleanup checklist
