@@ -25,6 +25,7 @@ A personalized Neovim setup configured in Lua. This configuration is built aroun
 - **Task Runner**: Manage and run tasks (compiler, linter, etc.) with [overseer.nvim](https://github.com/stevearc/overseer.nvim).
 - **Editing Helpers**: Auto-pairs with [nvim-autopairs](https://github.com/windwp/nvim-autopairs), surround editing with [nvim-surround](https://github.com/kylechui/nvim-surround), and comment toggling with [Comment.nvim](https://github.com/numToStr/Comment.nvim).
 - **Refactoring**: Extract/inline function and variable via [refactoring.nvim](https://github.com/ThePrimeagen/refactoring.nvim) (treesitter-based, works across C/C++, Python and Lua).
+- **Text Objects**: Function, class and parameter text objects and function motions via [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects).
 - **Git**: Hunk signs and inline git actions via [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim).
 - **Discoverability**: On-demand keybinding hints with [which-key.nvim](https://github.com/folke/which-key.nvim).
 - **Clipboard**: Default yank/paste uses the system clipboard (`clipboard=unnamedplus`).

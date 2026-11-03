@@ -44,6 +44,7 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 | `gri` | Go to implementation (Nvim built-in) | `vim.lsp.buf.implementation` |
 | `grt` | Go to type definition (Nvim built-in) | `vim.lsp.buf.type_definition` |
 | `<leader>cf` | Format buffer | `conform.nvim` (fallback to LSP) |
+| `<leader>cq` | Apply the quickfix under the cursor | `vim.lsp.buf.code_action` |
 | `<leader>cF` | Apply all quickfixes in the buffer | `vim.lsp.buf.code_action` (looped) |
 | `<leader>a` | Alternate between source/header (C/C++) | `:LspClangdSwitchSourceHeader` |
 | `<leader>si` | Show symbol info (C/C++) | `:LspClangdShowSymbolInfo` |
@@ -52,7 +53,7 @@ These mappings are active when an LSP server (e.g., `basedpyright`, `ruff`) is a
 
 `gr` is deliberately left unmapped. Binding it would make it a prefix of the five `gr*` built-ins above and stall each behind `timeoutlen`.
 
-Diagnostics ending in `(fix available)` are code actions: put the cursor on that line and press `<leader>ca`, or `<leader>cF` to apply every fix in the buffer at once. The cursor must be on the diagnostic's line — clangd only returns a quickfix when the request carries the diagnostic it fixes, so `]d` then `<leader>ca` is the reliable rhythm. clang-tidy's brace fixes are not reindented, so follow up with `<leader>cf`.
+Diagnostics ending in `(fix available)` are code actions: put the cursor on the diagnostic and press `<leader>cq` to apply its fix (the picker opens only if there are several), `<leader>ca` to choose from all actions, or `<leader>cF` to apply every fix in the buffer at once. The cursor must be inside the diagnostic's underlined range, not just on its line — clangd only returns a quickfix when the request carries the diagnostic it fixes, so `]d` then `<leader>cq` is the reliable rhythm. clang-tidy's brace fixes are not reindented, so follow up with `<leader>cf`.
 
 ## 🚨 Diagnostics
 
@@ -118,7 +119,7 @@ Diagnostics ending in `(fix available)` are code actions: put the cursor on that
 | `<leader>mo` | Open executor output | `:CMakeOpenExecutor` |
 | `<leader>mq` | Close both output panes | `:CMakeCloseExecutor` + `:CMakeCloseRunner` |
 
-`:CMakeQuickStart` scaffolds a new C/C++ project. In a C/C++ buffer, `<F5>` lists the available launch configurations. `codelldb` is installed by Mason; the `gdb` launch/attach entries only appear once `gdb` is installed from your distro.
+`:CMakeQuickStart` scaffolds a new C/C++ project. It writes `CMakeLists.txt` and `main.cpp` into the current directory and overwrites an existing `main.cpp` without asking, so run it before writing any code. In a C/C++ buffer, `<F5>` lists the available launch configurations. `codelldb` is installed by Mason; the `gdb` launch/attach entries only appear once `gdb` is installed from your distro.
 
 For a standalone `.cpp`/`.c` file with no `CMakeLists.txt`, use `<leader>or` (`:OverseerRun`) and pick **C/C++: build & run** — it compiles the current file and runs it straight away, opening the program output in a floating window. Compiler errors go to the quickfix list instead. The binary is written to `~/.cache/nvim/overseer-single-file/`.
 
@@ -151,6 +152,22 @@ Available in normal and visual mode. In normal mode these are operator-pending: 
 | `<leader>rs` | Pick a refactoring from a list |
 
 In C++, extracted variables are declared `auto` — the plugin is treesitter-based and has no semantic type information, and its default placeholder does not compile.
+
+**Extracting a function in C++: prefer clangd.** Select lines with `V`, press `gra`, pick **Extract to function**, then rename the result (clangd always calls it `extracted`) with `grn`. clangd handles free functions and methods, and adds the member declaration to the class. It offers nothing when the selection declares a variable used after it; for free functions `<leader>re` handles that case, but do not use `<leader>re` on class methods — it generates C++ that does not compile.
+
+## 🎯 Text Objects & Motions (`nvim-treesitter-textobjects`)
+
+Text objects work in visual mode and after any operator (`d`, `c`, `y`, …), e.g. `daf` cuts the function under the cursor and `vic` selects a class body. They also work from elsewhere on the line, jumping ahead to the next match.
+
+| Key | Description | Mode |
+| :--- | :--- | :--- |
+| `af` / `if` | Whole function / function body | Visual, Operator |
+| `ac` / `ic` | Whole class / class body | Visual, Operator |
+| `aa` / `ia` | Parameter with its comma / parameter only | Visual, Operator |
+| `]m` / `[m` | Next / previous function start | Normal, Visual, Operator |
+| `]M` / `[M` | Next / previous function end | Normal, Visual, Operator |
+
+`af` and `ac` select whole lines and include the blank line that follows. To move a function to the bottom of a file: `daf`, `G`, `o`, `<Esc>`, `p`.
 
 ## 🤖 AI Assistance
 
@@ -368,6 +385,9 @@ This section covers standard Vim motions, commands, and operators that are funda
 | `?{pattern}` | Search backward for `{pattern}` |
 | `n` | Go to next search match |
 | `N` | Go to previous search match |
+| `Ctrl+g` / `Ctrl+t` | While typing a search: move to next / previous match |
+| `<Esc>` | Clear search highlight in Normal mode (`lua/keymaps.lua`) |
+| `:noh` or `Ctrl+l` | Clear search highlight (Core) |
 | `*` | Search forward for word under cursor |
 | `#` | Search backward for word under cursor |
 | `:%s/old/new/g` | Replace all 'old' with 'new' in file |
