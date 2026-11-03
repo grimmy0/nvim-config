@@ -5,10 +5,40 @@ if ok_mason then
   mason.setup()
 end
 
+-- Mason has no option for extra pip packages, and every python-lsp-server
+-- install or update recreates its venv. Re-adding pylsp-rope after each one
+-- keeps a Mason update from silently dropping the refactorings. Registered
+-- before mason-tool-installer runs, so the first install is covered too.
+local ok_registry, registry = pcall(require, 'mason-registry')
+if ok_registry then
+  registry:on('package:install:success', function(pkg)
+    if pkg.name ~= 'python-lsp-server' then
+      return
+    end
+    local pip = vim.fs.joinpath(pkg:get_install_path(), 'venv', 'bin', 'pip')
+    vim.system({ pip, 'install', '--quiet', 'pylsp-rope' }, {}, function(result)
+      if result.code ~= 0 then
+        vim.schedule(function()
+          vim.notify('pylsp-rope install failed: ' .. result.stderr, vim.log.levels.ERROR)
+        end)
+      end
+    end)
+  end)
+end
+
 local ok_mti, mti = pcall(require, 'mason-tool-installer')
 if ok_mti then
   mti.setup({
-    ensure_installed = { 'basedpyright', 'ruff', 'debugpy', 'mypy', 'clangd', 'clang-format', 'codelldb' },
+    ensure_installed = {
+      'basedpyright',
+      'ruff',
+      'python-lsp-server',
+      'debugpy',
+      'mypy',
+      'clangd',
+      'clang-format',
+      'codelldb',
+    },
     auto_update = false,
     run_on_start = true,
     start_delay = 0,
@@ -151,6 +181,46 @@ vim.lsp.config('basedpyright', {
   },
 })
 
+-- pylsp, only for pylsp-rope
+-- basedpyright and ruff have no extract method/variable or inline refactorings;
+-- pylsp-rope adds them as code actions. Every built-in pylsp plugin is off so
+-- it adds no second set of diagnostics, completions or formatting, and on_init
+-- drops the capabilities basedpyright already covers so hover, rename and
+-- go-to requests are not answered twice. No shared on_attach: basedpyright
+-- already sets the buffer's LSP keymaps.
+local pylsp_plugins = { pylsp_rope = { enabled = true, rename = false } }
+for _, name in ipairs({
+  'autopep8', 'flake8', 'folding', 'jedi_completion', 'jedi_definition',
+  'jedi_highlight', 'jedi_hover', 'jedi_references', 'jedi_rename',
+  'jedi_signature_help', 'jedi_symbols', 'jedi_type_definition', 'mccabe',
+  'preload', 'pycodestyle', 'pydocstyle', 'pyflakes', 'pylint',
+  'rope_autoimport', 'rope_completion', 'yapf',
+  -- Not a built-in: Mason builds the venv with --system-site-packages, so
+  -- pylsp also loads plugins pip-installed into ~/.local, such as
+  -- python-lsp-ruff, which would duplicate the ruff server's diagnostics.
+  'ruff',
+}) do
+  pylsp_plugins[name] = { enabled = false }
+end
+
+vim.lsp.config('pylsp', {
+  cmd = { resolve_executable('pylsp') },
+  capabilities = capabilities,
+  settings = { pylsp = { plugins = pylsp_plugins } },
+  on_init = function(client)
+    local caps = client.server_capabilities
+    for _, cap in ipairs({
+      'completionProvider', 'hoverProvider', 'signatureHelpProvider',
+      'definitionProvider', 'typeDefinitionProvider', 'referencesProvider',
+      'documentHighlightProvider', 'documentSymbolProvider',
+      'workspaceSymbolProvider', 'renameProvider', 'foldingRangeProvider',
+      'documentFormattingProvider', 'documentRangeFormattingProvider',
+    }) do
+      caps[cap] = nil
+    end
+  end,
+})
+
 -- clangd
 -- nvim-lspconfig ships lsp/clangd.lua, which negotiates clangd's non-standard
 -- offsetEncoding and installs :LspClangdSwitchSourceHeader and
@@ -218,6 +288,7 @@ vim.lsp.config('clangd', {
 -- Enable filetype-based activation
 vim.lsp.enable('ruff')
 vim.lsp.enable('basedpyright')
+vim.lsp.enable('pylsp')
 vim.lsp.enable('clangd')
 
 require('python_auto_import').setup()
