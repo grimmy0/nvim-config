@@ -247,6 +247,10 @@ vim.lsp.config('clangd', {
     '--query-driver=/usr/bin/c++,/usr/bin/cc,/usr/bin/g++,/usr/bin/gcc,/usr/bin/clang++,/usr/bin/clang,/usr/bin/*-g++,/usr/bin/*-gcc,/usr/lib64/ccache/*',
     '-j=' .. math.max(2, math.floor(vim.uv.available_parallelism() / 2)),
   },
+  -- Upstream also lists 'c.doxygen' and 'cpp.doxygen', compound filetypes
+  -- that only exist with g:load_doxygen_syntax set. Nothing here sets it, so
+  -- :checkhealth vim.lsp reports them as unknown filetypes.
+  filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     if clangd_upstream_on_attach then
